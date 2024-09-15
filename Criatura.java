@@ -6,6 +6,7 @@ public class Criatura{
 	private int custoMana;
 	private String nome;
 	
+	
 	public void setMana(int mana) {
 		this.custoMana = mana;
 	}
@@ -43,6 +44,10 @@ public class Criatura{
 		this.ataque(this.poder);
 		destino.receberDano(this.poder);
 	}
+	public String toString() {
+		return nome;
+    }
 
 }
+
 

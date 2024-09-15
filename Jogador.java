@@ -1,9 +1,20 @@
 package cartas;
 
+import java.util.ArrayList;
+
 public class Jogador {
 	private int vida;
 	private int mana;
-	private int mão;
+	private ArrayList<Criatura> mao;
+	private ArrayList<Criatura> deck;
+	private ArrayList<Criatura> cemiterio;
+	
+	public Jogador() {
+		this.mao = new ArrayList<>();
+		this.deck = new ArrayList<>();
+		this.cemiterio = new ArrayList<>();
+	}
+
 	public int setVida(){
 		return this.vida = 30;
 	}
@@ -14,11 +25,42 @@ public class Jogador {
 		this.vida = this.vida - poder;
 		
 	}
-	public int setMão() {
-		return this.mão = 5;
-	}
-	public void jogarCarta() {
-		this.mão = this.mão - 1;
+	public void setMão() {
+		this.mao.add(new Javali());
+		this.mao.add(new Javali());
+		this.mao.add(new GigantePlatina());
+		this.mao.add(new GigantePlatina());
+		this.mao.add(new DragaoFogo());
 	}
 	
+	public int getMãoSize() {
+		return this.mao.size();
+	}
+
+	public Criatura jogarCarta(int numeroInput) {
+		Criatura criatura = null;
+		for(int i = 0; i < this.mao.size(); i++) {
+			if(numeroInput == i+1) {
+				criatura = mao.get(i);
+				this.mao.remove(i);
+			}
+		}
+		return criatura;
+	}
+	public void printMão() {
+		int i = 1;
+		for(Criatura carta : mao) {
+			System.out.print(i);
+			System.out.println(carta);
+			i++;
+		}
+	}
+	public void setDeck(){
+		this.deck.add(null);
+	}
+	public void setCemiterio() {
+		this.cemiterio.add(null);
+	}
 }
+	
+
