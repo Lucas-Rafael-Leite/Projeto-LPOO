@@ -5,7 +5,7 @@ public class Javali extends Criatura {
 		super();
 		ataque(1);
 		defesa(2);
-		setNome("Javali Selvagem");
+		setNome(" Javali Selvagem");
 		setMana(1);
 	}
 }

@@ -5,7 +5,7 @@ public class GigantePlatina extends Criatura {
 		super();
 		ataque(1);
 		defesa(8);
-		setNome("Gigante de Platina");
+		setNome(" Gigante de Platina");
 		setMana(6);
 	}
 

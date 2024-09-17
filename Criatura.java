@@ -11,6 +11,10 @@ public class Criatura{
 		this.custoMana = mana;
 	}
 	
+	public int getMana() {
+		return this.custoMana;
+	}
+
 	public void setNome(String criaturaNome) {
 		this.nome = criaturaNome;	
 	}
