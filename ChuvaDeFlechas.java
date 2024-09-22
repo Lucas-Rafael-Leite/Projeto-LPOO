@@ -1,12 +1,11 @@
 package cartas;
-
 public class ChuvaDeFlechas extends Feiticos {
-
     public ChuvaDeFlechas(){
         super();
-        setCustoMana(4);
+        setNome(" Chuva de Flechas");
+		setMana(4);
+        setMana(1);
         danoEfeito(1);
-        atacarTodasCriaturas(mao);
         
     }
 }

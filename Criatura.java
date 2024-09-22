@@ -1,23 +1,8 @@
 package cartas;
 
-public class Criatura{
+public class Criatura extends Carta{
 	private int poder; 
 	private int resistencia;
-	private int custoMana;
-	private String nome;
-	
-	
-	public void setMana(int mana) {
-		this.custoMana = mana;
-	}
-	
-	public int getMana() {
-		return this.custoMana;
-	}
-
-	public void setNome(String criaturaNome) {
-		this.nome = criaturaNome;	
-	}
 
 	public void ataque(int dano) {
 		this.poder = dano;
@@ -48,9 +33,7 @@ public class Criatura{
 		this.ataque(this.poder);
 		destino.receberDano(this.poder);
 	}
-	public String toString() {
-		return nome;
-    }
+
 
 }
 

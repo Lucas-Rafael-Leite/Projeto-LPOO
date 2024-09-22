@@ -1,40 +1,37 @@
-import cartas.Criatura;
+package cartas;
 
-public class Encantamentos {
-    private int custoMana;
-    private String nome;
-    private int efeitoContinuo;
+import java.util.ArrayList;
 
-    public void setNome(String nome){
-        this.nome = nome;
-    }
-    
-    public void setCustomana(int custoMana){
-        this.custoMana = custoMana;
-    }
+public class Encantamentos extends Carta {
+	 private int efeitoContinuo;
 
-    public void setEfeitoContinuo(int efeitoContinuo){
-        this.efeitoContinuo = efeitoContinuo;
-    }
+	    public void setEfeitoContinuo(int efeitoContinuo){
+	        this.efeitoContinuo = efeitoContinuo;
+	    }
 
-    public void danoEfeitoContinuo(int dano){
-        this.efeitoContinuo = dano ;
-    }
-    
-    public void atacarCriatura(Criatura destino) {
-		this.danoEfeitoContinuo(this.efeitoContinuo);
-		destino.receberDano(this.efeitoContinuo);
-    }
-    
-    public void buffTodos(int efeito){
-        this.poder += efeito;
-    }
-    
-    public void buffUm(int dano){
-        this.poder += dano;
-    }
-     public void receberBuff(Criatura destino){
-        this.buffUm(this.efeitoContinuo);
-     }
-    
+	    public void danoEfeitoContinuo(int dano){
+	        this.efeitoContinuo = dano ;
+	    }
+	    
+	    public void atacarCriatura(Criatura destino) {
+			this.danoEfeitoContinuo(this.efeitoContinuo);
+			destino.receberDano(this.efeitoContinuo);
+	    }
+	    
+	    public void buffTodos(int efeito, ArrayList<Criatura> criaturas){
+	        for(int i = 0; i < criaturas.size(); i++) {
+	        	int ataque = criaturas.get(i).getPoder();
+	        	ataque += efeito;
+	        	criaturas.get(i).ataque(ataque);
+	        }
+	    }
+	    
+	    public void buffUm(int dano, Criatura destino){
+	        int ataque = destino.getPoder();
+	        ataque += dano;
+	        destino.ataque(ataque);
+	    }
 }
+	    
+	
+
