@@ -23,9 +23,7 @@ public class ArenaCombate {
 
 	public void vezJogador(Scanner ler) {
 		int numeroTurno = 1;
-		while(jogadores.get(0).getVida() > 0 || jogadores.get(1).getVida() > 0) {
-			boolean verdade = false;
-			while(verdade == false) {
+		while(jogadores.get(0).getVida() > 0 && jogadores.get(1).getVida() > 0) {
 				for(int i = 0; i < this.jogadores.size(); i++) {
 					System.out.printf("Vez do Jogador " + (i+1));
 					System.out.println();
@@ -35,6 +33,8 @@ public class ArenaCombate {
 					this.jogadores.get(i).printMão();
 					int input = Integer.parseInt(ler.nextLine());	
 					receberCarta(this.jogadores.get(i), input);
+					boolean verdade = false;
+					while(verdade == false) {
 					System.out.println("Jogar outra carta(c), Deseja ver o campo de batalha(b) ou terminar o turno(t)");
 					String confirma = ler.nextLine();
 					verdade = confirma.equals("t") == true;
@@ -111,9 +111,7 @@ public class ArenaCombate {
 			numeroTurno++;
 			for(int i = 0; i < jogadores.size(); i++) {
 				jogadores.get(i).adicionarMana(numeroTurno);
-			}
-			
-				
+			}		
 		}
 	}
 
