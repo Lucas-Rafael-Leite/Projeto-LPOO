@@ -1,6 +1,7 @@
 package cartas;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Jogador {
 	private int vida;
@@ -8,11 +9,13 @@ public class Jogador {
 	private ArrayList<Carta> mao;
 	private ArrayList<Carta> deck;
 	private ArrayList<Carta> cemiterio;
+	private Random random;
 	
 	public Jogador() {
 		this.mao = new ArrayList<>();
 		this.deck = new ArrayList<>();
 		this.cemiterio = new ArrayList<>();
+		 this.random = new Random();
 	}
 
 	public int getVida(){
@@ -41,11 +44,9 @@ public class Jogador {
 		
 	}
 	public void setMão() {
-		this.mao.add(new Javali());
-		this.mao.add(new Javali());
-		this.mao.add(new GigantePlatina());
-		this.mao.add(new GigantePlatina());
-		this.mao.add(new DragaoFogo());
+		for(int i = 0; i < 5; i++) {
+			adicionarMão();
+		}
 		
 	}
 	
@@ -83,7 +84,41 @@ public class Jogador {
 		}
 	}
 	public void setDeck(){
-		this.deck.add(null);
+		this.deck.add(new Javali());
+		this.deck.add(new Javali());
+		this.deck.add(new GigantePlatina());
+		this.deck.add(new GigantePlatina());
+		this.deck.add(new DragaoFogo());
+		this.deck.add(new DragaoFogo());
+		this.deck.add(new LoboNeve());
+		this.deck.add(new LoboNeve());
+		this.deck.add(new ChuvaDeFlechas());
+		this.deck.add(new ChuvaDeFlechas());
+		this.deck.add(new AlmaDeMana());
+		this.deck.add(new AlmaDeMana());
+		this.deck.add(new EspiritoDeAgua());
+		this.deck.add(new EspiritoDeAgua());
+		this.deck.add(new Quimera());
+		this.deck.add(new Quimera());
+		this.deck.add(new Cavaleiro());
+		this.deck.add(new Cavaleiro());
+		this.deck.add(new LeãoDaIlha());
+		this.deck.add(new LeãoDaIlha());
+		this.deck.add(new GolemDePedra());
+		this.deck.add(new GolemDePedra());
+		this.deck.add(new AtiradorNoturno());
+		this.deck.add(new AtiradorNoturno());
+		this.deck.add(new AranhaGigante());
+		this.deck.add(new AranhaGigante());
+		this.deck.add(new DragãoDaMontanha());
+		this.deck.add(new DragãoDaMontanha());
+		this.deck.add(new GiganteOuro());
+		this.deck.add(new GiganteOuro());
+	
+	}
+	
+	public int getDeckSize() {
+		return this.deck.size();
 	}
 	public void setCemiterio() {
 		this.cemiterio.add(null);
@@ -92,6 +127,30 @@ public class Jogador {
 	public void adicionarCemiterio(Carta carta) {
 		this.cemiterio.add(carta);
 	}
+	
+	public void adicionarMão() {
+		if(this.deck.size() > 0) {
+			Carta carta = this.deck.get(0);
+			this.mao.add(carta);
+			this.deck.remove(0);
+		}
+	}
+	
+	public void embaralharDeck() {
+		for(int i = 0; i < this.deck.size(); i++) {
+			int indice = random.nextInt(this.deck.size());
+			Carta carta = this.deck.get(i);
+			carta = this.deck.set(indice, carta);
+			carta = this.deck.set(i, carta);
+			
+		}
+	}
+	public void printDeck() {
+		for(Carta carta: this.deck) {
+			System.out.println(carta);
+		}
+	}
+
 }
 	
-
+	

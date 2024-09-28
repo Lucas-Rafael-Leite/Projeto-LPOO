@@ -3,13 +3,16 @@ package cartas;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+
 public class ArenaCombate {
 	private ArrayList<Jogador> jogadores;
 	private ArrayList<CartasCampo> secção;
+
 	
 	public ArenaCombate() {
 		this.jogadores = new ArrayList<>();
 		this.secção = new ArrayList<>();
+		
 		
 
 	}
@@ -22,6 +25,7 @@ public class ArenaCombate {
 	
 
 	public void vezJogador(Scanner ler) {
+		primeiroTurno(ler);
 		int numeroTurno = 1;
 		while(jogadores.get(0).getVida() > 0 && jogadores.get(1).getVida() > 0) {
 				for(int i = 0; i < this.jogadores.size(); i++) {
@@ -111,6 +115,8 @@ public class ArenaCombate {
 			numeroTurno++;
 			for(int i = 0; i < jogadores.size(); i++) {
 				jogadores.get(i).adicionarMana(numeroTurno);
+				jogadores.get(i).adicionarMão();
+				
 			}		
 		}
 	}
@@ -122,6 +128,8 @@ public class ArenaCombate {
 		this.jogadores.get(0).setMana();
 		this.jogadores.get(1).setMana();
 		for(int i = 0; i < this.jogadores.size(); i++) {
+			this.jogadores.get(i).setDeck();
+			this.jogadores.get(i).embaralharDeck();
 			this.jogadores.get(i).setMão();
 			System.out.printf("Vez do Jogador " + (i+1));
 			System.out.println();
@@ -170,6 +178,7 @@ public class ArenaCombate {
 			}
 			numeroTurno++;
 			jogadores.get(i).adicionarMana(numeroTurno);
+			jogadores.get(i).adicionarMão();
 		}
 	}
 
@@ -224,7 +233,6 @@ public class ArenaCombate {
     	System.out.printf(" Vida: " + jogadores.get(i).getVida());
     	System.out.println();
     }
-
 
 
 }
