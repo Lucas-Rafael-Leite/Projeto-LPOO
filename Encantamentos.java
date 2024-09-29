@@ -31,6 +31,14 @@ public class Encantamentos extends Carta {
 	        ataque += dano;
 	        destino.ataque(ataque);
 	    }
+		public void debuffUm(int dano, Criatura destino, int efeitoContinuo){
+	        int ataque = destino.getPoder();
+	        ataque += (dano - efeitoContinuo);
+	        destino.ataque(ataque);
+	    }
+
+		
+
 }
 	    
 	

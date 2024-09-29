@@ -4,7 +4,6 @@ public class ChuvaDeFlechas extends Feiticos {
         super();
         setNome(" Chuva de Flechas");
 		setMana(4);
-        setMana(1);
         danoEfeito(1);
         
     }
