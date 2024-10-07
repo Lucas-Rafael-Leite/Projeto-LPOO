@@ -8,13 +8,12 @@ public class Jogador {
 	private int mana;
 	private ArrayList<Carta> mao;
 	private ArrayList<Carta> deck;
-	private ArrayList<Carta> cemiterio;
+	private Cemiterio cemiterio;
 	private Random random;
 	
 	public Jogador() {
 		this.mao = new ArrayList<>();
 		this.deck = new ArrayList<>();
-		this.cemiterio = new ArrayList<>();
 		 this.random = new Random();
 	}
 
@@ -120,14 +119,7 @@ public class Jogador {
 	public int getDeckSize() {
 		return this.deck.size();
 	}
-	public void setCemiterio() {
-		this.cemiterio.add(null);
-	}
-	
-	public void adicionarCemiterio(Carta carta) {
-		this.cemiterio.add(carta);
-	}
-	
+
 	public void adicionarMão() {
 		if(this.deck.size() > 0) {
 			Carta carta = this.deck.get(0);
@@ -150,6 +142,10 @@ public class Jogador {
 			System.out.println(carta);
 		}
 	}
+	public Cemiterio getCemiterio() {
+		return this.cemiterio;
+	}
+
 
 }
 	

@@ -26,12 +26,30 @@ public class CartasCampo {
 
 		}
 	}
+	
+	public void adicionarCriatura(Criatura criatura) {
+		this.cartas.add(criatura);
+	}
 	public boolean isEmpty() {
 		if (cartas.isEmpty()) {
 			return true;
 		}
 		else {
 			return false;
+		}
+	}
+	public void verificarCartas(Cemiterio cemiterio) {
+		if(cemiterio != null) {
+			for(Carta carta : cartas) {
+				if(carta instanceof Criatura) {
+					Criatura criatura = (Criatura) carta;
+					if(criatura.getDefesa() <= 0) {
+						cemiterio.receberCartas(criatura);
+						remover(criatura);
+					}
+				}
+			}
+		
 		}
 	}
 	public void printCartasCampo() {	
@@ -71,8 +89,8 @@ public class CartasCampo {
 		return cartas;
 	}
 
-	public void remove(Criatura escolherCarta) {
-		cartas.remove(escolherCarta);
+	public void remover(Criatura escolherCarta) {
+		this.cartas.remove(escolherCarta);
 		
 	}
 	

@@ -38,6 +38,7 @@ public class ArenaCombate {
 					int input = Integer.parseInt(ler.nextLine());	
 					receberCarta(this.jogadores.get(i), input);
 					boolean verdade = false;
+					secção.get(i).verificarCartas(jogadores.get(i).getCemiterio());
 					while(verdade == false) {
 					System.out.println("Jogar outra carta(c), Deseja ver o campo de batalha(b) ou terminar o turno(t)");
 					String confirma = ler.nextLine();

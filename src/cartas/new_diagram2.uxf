@@ -1,0 +1,569 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1.0">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1010</x>
+      <y>280</y>
+      <w>210</w>
+      <h>210</h>
+    </coordinates>
+    <panel_attributes>cartas::Feitiço
+--
+-efeito: int 
+--
++getEfeito():
++atacarCriatura():
++danoEfeito():
++cartaUtilizada(): void
+--
+bg=WHITE</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>820</x>
+      <y>110</y>
+      <w>190</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>170.0;10.0;10.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1100</x>
+      <y>150</y>
+      <w>30</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;130.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1310</x>
+      <y>270</y>
+      <w>210</w>
+      <h>230</h>
+    </coordinates>
+    <panel_attributes>cartas::Encantamento
+--
+-efeitoContinuo: int
+--
++fimDoEfeito(): void
++setEfeitoContinuo()
++danoEfeitoContinuo()
++atacarCriatura()
++buffTodos()
++buffUm()
++receberBuff()
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1230</x>
+      <y>90</y>
+      <w>270</w>
+      <h>200</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;250.0;180.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>720</x>
+      <y>220</y>
+      <w>250</w>
+      <h>280</h>
+    </coordinates>
+    <panel_attributes>cartas::Criatura
+--
+-poder: int
+-resistencia: int
+--
++ataque(int dano): void
++defesa(int defesa): void
++receberDano(int dano): void
++atacarCriatura(Criatura destino): void
++getPoder(): int
++getDefesa(): int
++atacarJogador(Jogador destino): void
++semVida(): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>560</x>
+      <y>450</y>
+      <w>180</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;160.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>600</x>
+      <y>440</y>
+      <w>130</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>atacarJogador()
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>590</x>
+      <y>330</y>
+      <w>150</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>130.0;10.0;10.0;10.0;10.0;90.0;130.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>600</x>
+      <y>320</y>
+      <w>160</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>atacarCriatura()
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>90</x>
+      <y>530</y>
+      <w>230</w>
+      <h>310</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>210.0;290.0;10.0;290.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>210</x>
+      <y>800</y>
+      <w>100</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>jogarCarta()
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>800</x>
+      <y>500</y>
+      <w>250</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>230.0;70.0;10.0;70.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>940</x>
+      <y>550</y>
+      <w>100</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>semVida()
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1080</x>
+      <y>480</y>
+      <w>30</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;40.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>1090</x>
+      <y>500</y>
+      <w>130</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>cartaUtilizada()
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1280</x>
+      <y>490</y>
+      <w>170</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;70.0;150.0;70.0;150.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>1300</x>
+      <y>540</y>
+      <w>100</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>fimDoEfeito()
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>180</x>
+      <y>510</y>
+      <w>150</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;130.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>510</y>
+      <w>180</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>mão: ArrayList&lt;Carta&gt;</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>200</x>
+      <y>500</y>
+      <w>120</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>adicionarCarta()
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>460</x>
+      <y>650</y>
+      <w>270</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;90.0;250.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>570</x>
+      <y>720</y>
+      <w>140</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>vezDoJogador()
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>40</x>
+      <y>350</y>
+      <w>190</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>deck: ArrayList&lt;Carta&gt;</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>120</x>
+      <y>370</y>
+      <w>30</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;140.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>130</x>
+      <y>430</y>
+      <w>130</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>adicionarCarta()
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>310</x>
+      <y>280</y>
+      <w>260</w>
+      <h>380</h>
+    </coordinates>
+    <panel_attributes>jogadores::Jogador
+--
+-vida: int
+-mana: int
+-mão: ArrayList&lt;Carta&gt;
+-deck: ArrayList&lt;Carta&gt;
+-cemiterio: Cemiterio
+--
++Jogador(): 
++getVida(): int
++setVida(): void
++getMana(): int
++setMana(): void
++adicionarMana(int input): void
++receberDano(int poder): void
++setMão(): void
++getMãoSize(): int
++jogarCarta(int numeroInput): Carta
++printMão(): void
++setDeck(): void
++setCemiterio(): void
++adicionarCemiterio(Carta carta): void
++embaralharDeck(): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>990</x>
+      <y>0</y>
+      <w>250</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>cartas::Carta
+--
+-nome: String
+-custoMana: int
+--
++toString(): String
++getMana(): int
++setMana(int mana): void
++setNome(String criaturaNome): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>300</x>
+      <y>770</y>
+      <w>310</w>
+      <h>230</h>
+    </coordinates>
+    <panel_attributes>campos::CartasCampo
+--
+-cartas: ArrayList&lt;Carta&gt;
+--
++CartasCampo(): 
++receberCarta(Jogador jogador, int input): void
++isEmpty(): boolean
++printCartasCampo(): void
++escolherCarta(int input): Carta
++getCartasCampoSize(): int
++getArray(): ArrayList&lt;Carta&gt;
++remove(Criatura escolherCarta): void
++printQuantidadeDeCarta(): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>710</x>
+      <y>640</y>
+      <w>310</w>
+      <h>230</h>
+    </coordinates>
+    <panel_attributes>campos::ArenaCombate
+--
+-jogadores: ArrayList&lt;Jogador&gt;
+-secção: ArrayList&lt;CartasCampo&gt;
+--
++ArenaCombate(): 
++setJogadores(): void
++vezJogador(Scanner ler): void
++primeiroTurno(Scanner ler): void
++receberCarta(Jogador jogador, int input): void
++verificarCriatura(int index, int input): void
++compararJogadores(Jogador jogador): boolean
++printJogadores(int i): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>600</x>
+      <y>810</y>
+      <w>130</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;20.0;110.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>220</x>
+      <y>340</y>
+      <w>110</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;20.0;90.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>170</x>
+      <y>510</y>
+      <w>160</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;20.0;140.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>1110</x>
+      <y>230</y>
+      <w>90</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>extends
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>1370</x>
+      <y>170</y>
+      <w>70</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>extends
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>860</x>
+      <y>140</y>
+      <w>70</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>extends
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>20</x>
+      <y>90</y>
+      <w>210</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>menu::SeleçãoDeck
+--
+-jogadores: ArrayList&lt;Jogadores&gt;
+--
++SeleçãoDeck()
++opçãoDeck(): void
++escolherDeck(): void
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>220</x>
+      <y>180</y>
+      <w>220</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>200.0;100.0;200.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>270</x>
+      <y>170</y>
+      <w>140</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>escolherDeck()
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1030</x>
+      <y>520</y>
+      <w>260</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>campos::Cemiterio
+--
+-cartas: ArrayList&lt;Carta&gt;
+--
++Cemiterio(): 
++receberCartas(Criatura criatura): void
++getQuantidadeCartas(): int
++printCemiterio(): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
