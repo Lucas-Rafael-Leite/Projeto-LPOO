@@ -1,5 +1,7 @@
 package cartas;
 
+import jogadores.Jogador;
+
 public class Criatura extends Carta{
 	private int poder; 
 	private int resistencia;
@@ -33,6 +35,14 @@ public class Criatura extends Carta{
 		this.ataque(this.poder);
 		destino.receberDano(this.poder);
 	}
+
+	public boolean semVida() {
+		if (this.resistencia <= 0){
+			return true;
+		}
+		return false;
+	}
+
 
 
 }

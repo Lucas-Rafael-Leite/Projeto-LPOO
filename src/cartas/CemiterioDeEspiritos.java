@@ -1,5 +1,8 @@
 package cartas;
 
+import arenas.CartasCampo;
+import arenas.Cemiterio;
+
 public class CemiterioDeEspiritos extends Encantamentos{
 
     public CemiterioDeEspiritos(){
