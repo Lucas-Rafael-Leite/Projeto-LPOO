@@ -3,6 +3,7 @@ package jogadores;
 import java.util.ArrayList;
 import java.util.Random;
 
+import arenas.CartasCampo;
 import arenas.Cemiterio;
 import cartas.AlmaDeMana;
 import cartas.AranhaGigante;
@@ -10,9 +11,11 @@ import cartas.AtiradorNoturno;
 import cartas.Carta;
 import cartas.Cavaleiro;
 import cartas.ChuvaDeFlechas;
+import cartas.Criatura;
 import cartas.DragaoFogo;
 import cartas.DragãoDaMontanha;
 import cartas.EspiritoDeAgua;
+import cartas.Feiticos;
 import cartas.GiganteOuro;
 import cartas.GigantePlatina;
 import cartas.GolemDePedra;
@@ -22,6 +25,7 @@ import cartas.LoboNeve;
 import cartas.Quimera;
 
 public class Jogador {
+	private String nome;
 	private int vida;
 	private int mana;
 	private ArrayList<Carta> mao;
@@ -68,7 +72,17 @@ public class Jogador {
 		
 	}
 	
-
+	public Carta getCartaMão(int input){
+		if(input > this.mao.size()) {
+			return null;
+		}
+		if(input <= 0 ) {
+			return null;
+		}
+		else {
+			return mao.get(input-1);
+		}
+	}
 	
 	public int getMãoSize() {
 		return this.mao.size();
@@ -164,8 +178,41 @@ public class Jogador {
 	public Cemiterio getCemiterio() {
 		return this.cemiterio;
 	}
+	
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
 
+	public String getNome() {
+		return this.nome;
+	}
 
+	public void jogarCarta(int input, Carta carta, CartasCampo campo) {
+		if(input > this.mao.size()) {
+			
+		}
+		if(input == 0) {
+			
+		}
+		else if(getCartaMão(input).getMana() <= this.mana) {
+					this.mana = this.mana - getCartaMão(input).getMana();
+					carta = getCartaMão(input);
+					this.mao.remove(input-1);
+					if(carta instanceof Criatura) {
+						campo.getArray().add(carta);
+						((Criatura) carta).setEstado();
+					}
+					else if(carta instanceof Feiticos) {
+						campo.getArrayFeitiços().add((Feiticos) carta);
+					}
+			
+				}
+				else {
+					System.out.println("Você não tem mana o suficiente!");
+				}
+	}
 }
+
+
 	
 	

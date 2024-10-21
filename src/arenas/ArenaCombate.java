@@ -39,7 +39,7 @@ public class ArenaCombate {
 					System.out.println("Escolha uma carta para jogar no campo");
 					this.jogadores.get(i).printMão();
 					int input = Integer.parseInt(ler.nextLine());	
-					receberCarta(this.jogadores.get(i), input);
+					jogadores.get(i).jogarCarta(input, jogadores.get(i).getCartaMão(input), secção.get(i));
 					boolean verdade = false;
 					secção.get(i).verificarCartas(jogadores.get(i));
 					while(verdade == false) {
@@ -52,7 +52,7 @@ public class ArenaCombate {
 						System.out.println("Escolha uma carta para jogar no campo");
 						this.jogadores.get(i).printMão();
 						int input2 = Integer.parseInt(ler.nextLine());	
-						receberCarta(this.jogadores.get(i), input2);
+						jogadores.get(i).jogarCarta(input2, jogadores.get(i).getCartaMão(input2), secção.get(i));;
 					}
 					if(confirma.equals("b")) {
 						if(compararJogadores(jogadores.get(i)) == false) {
@@ -71,16 +71,23 @@ public class ArenaCombate {
 								int input3 = Integer.parseInt(ler.nextLine());
 								if (secção.get(i).escolherCarta(input3) instanceof Criatura) {
 									Criatura criatura = (Criatura) secção.get(i).escolherCarta(input3);
-									System.out.println("Agora escolha um alvo para ser atacado");
-									printJogadores(i+1);
-									secção.get(i+1).printCartasCampo();
-									int input4 = Integer.parseInt(ler.nextLine());
-									if(input4 == 0) {
-										criatura.atacarJogador(jogadores.get(i+1));
+									if(criatura.getEstado() == true) {
+										System.out.println("A criatura não pode atacar!");
 									}
 									else {
-										Criatura criatura2 = (Criatura) secção.get(i+1).escolherCarta(input4);
-										criatura.atacarCriatura(criatura2);
+										System.out.println("Agora escolha um alvo para ser atacado");
+										printJogadores(i+1);
+										secção.get(i+1).printCartasCampo();
+										int input4 = Integer.parseInt(ler.nextLine());
+										if(input4 == 0) {
+											criatura.atacarJogador(jogadores.get(i+1));
+											criatura.setEstado();
+										}
+										else {
+											Criatura criatura2 = (Criatura) secção.get(i+1).escolherCarta(input4);
+											criatura.atacarCriatura(criatura2);
+											criatura.setEstado();
+										}
 									}
 								}
 							}
@@ -101,17 +108,24 @@ public class ArenaCombate {
 								int input3 = Integer.parseInt(ler.nextLine());
 								if (secção.get(i).escolherCarta(input3) instanceof Criatura) {
 									Criatura criatura = (Criatura) secção.get(i).escolherCarta(input3);
-									System.out.println("Agora escolha um alvo para ser atacado");
-									printJogadores(i-1);
-									secção.get(i-1).printCartasCampo();
-									int input4 = Integer.parseInt(ler.nextLine());
-									if(input4 == 0) {
-										criatura.atacarJogador(jogadores.get(i-1));
+									if(criatura.getEstado() == true) {
+										System.out.println("A criatura não pode atacar!");
 									}
 									else {
-										Criatura criatura2 = (Criatura) secção.get(i-1).escolherCarta(input4);
-										criatura.atacarCriatura(criatura2);
-									}	
+										System.out.println("Agora escolha um alvo para ser atacado");
+										printJogadores(i-1);
+										secção.get(i-1).printCartasCampo();
+										int input4 = Integer.parseInt(ler.nextLine());
+										if(input4 == 0) {
+											criatura.atacarJogador(jogadores.get(i-1));
+											criatura.setEstado();
+										}
+										else {
+											Criatura criatura2 = (Criatura) secção.get(i-1).escolherCarta(input4);
+											criatura.atacarCriatura(criatura2);
+											criatura.setEstado();
+										}	
+									}
 								}
 							}
 						}
@@ -122,6 +136,7 @@ public class ArenaCombate {
 			for(int i = 0; i < jogadores.size(); i++) {
 				jogadores.get(i).adicionarMana(numeroTurno);
 				jogadores.get(i).adicionarMão();
+				secção.get(i).acordarCriaturas();
 				
 			}		
 		}
@@ -144,7 +159,7 @@ public class ArenaCombate {
 			System.out.println("Escolha uma carta para jogar no campo");
 			this.jogadores.get(i).printMão();
 			int input = Integer.parseInt(ler.nextLine());	
-			receberCarta(this.jogadores.get(i), input);
+			jogadores.get(i).jogarCarta(input, jogadores.get(i).getCartaMão(input), secção.get(i));
 			boolean verdade = false;
 			int numeroTurno = 0;
 			while(verdade == false) {
@@ -157,7 +172,7 @@ public class ArenaCombate {
 						System.out.println("Escolha uma carta para jogar no campo");
 						this.jogadores.get(i).printMão();
 						int input2 = Integer.parseInt(ler.nextLine());	
-						receberCarta(this.jogadores.get(i), input2);
+						jogadores.get(i).jogarCarta(input2, jogadores.get(i).getCartaMão(input2), secção.get(i));
 					}
 					if(confirma.equals("b")) {
 						if(compararJogadores(jogadores.get(i)) == false) {
@@ -185,28 +200,11 @@ public class ArenaCombate {
 			numeroTurno++;
 			jogadores.get(i).adicionarMana(numeroTurno);
 			jogadores.get(i).adicionarMão();
+			secção.get(i).acordarCriaturas();
 		}
 	}
 
 
-	public void receberCarta(Jogador jogador, int input) {
-		int n = jogador.getMãoSize();
-		int o = secção.size();
-		if(compararJogadores(jogador) == true) {
-			for(int i = 0; i < n+1; i++) {
-				if(input == i) {
-				secção.get(o-1).receberCarta(jogador, input);
-				}
-			}
-		}
-		else {
-			for(int i = 0; i < n+1; i++) {
-				if(input == i) {
-				secção.get(o-2).receberCarta(jogador, input);
-				}
-			}
-		}
-	}
 	
 
 	public void verificarCriatura(int index, int input) {
@@ -216,8 +214,6 @@ public class ArenaCombate {
 		}
 	}
    
-        
-    
     
     public boolean compararJogadores(Jogador jogador) {
     	int n = jogadores.size();

@@ -5,6 +5,7 @@ import jogadores.Jogador;
 public class Criatura extends Carta{
 	private int poder; 
 	private int resistencia;
+	private boolean estado;
 
 	public void ataque(int dano) {
 		this.poder = dano;
@@ -36,14 +37,17 @@ public class Criatura extends Carta{
 		destino.receberDano(this.poder);
 	}
 
-	public boolean semVida() {
-		if (this.resistencia <= 0){
-			return true;
-		}
-		return false;
+	public void setEstado() {
+		this.estado = true;
 	}
-
-
+	
+	public boolean getEstado() {
+		return this.estado;
+	}
+	
+	public void mudarEstado() {
+		this.estado = false;
+	}
 
 }
 
