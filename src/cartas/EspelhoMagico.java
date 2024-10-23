@@ -3,7 +3,7 @@ package cartas;
 public class EspelhoMagico extends Feiticos{
     public EspelhoMagico(){
         super();
-        setNome("EspelhoMagico");
+        setNome(" EspelhoMagico");
         setMana(6);
         danoEfeito(0);
 

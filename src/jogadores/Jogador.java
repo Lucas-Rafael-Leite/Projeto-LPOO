@@ -152,7 +152,8 @@ public class Jogador {
 	public int getDeckSize() {
 		return this.deck.size();
 	}
-
+	
+	
 	public void adicionarMão() {
 		if(this.deck.size() > 0) {
 			Carta carta = this.deck.get(0);
@@ -170,11 +171,22 @@ public class Jogador {
 			
 		}
 	}
+
+	
 	public void printDeck() {
+		int i = 1;
 		for(Carta carta: this.deck) {
-			System.out.println(carta);
+			System.out.print(i);
+			System.out.print(carta);
+			System.out.println();
+			i++;
 		}
 	}
+		
+	public void removerCartaDeck(int input) {
+		this.deck.remove(input);
+	}
+	
 	public Cemiterio getCemiterio() {
 		return this.cemiterio;
 	}
@@ -191,7 +203,7 @@ public class Jogador {
 		if(input > this.mao.size()) {
 			
 		}
-		if(input == 0) {
+		else if(input == 0) {
 			
 		}
 		else if(getCartaMão(input).getMana() <= this.mana) {
@@ -199,7 +211,7 @@ public class Jogador {
 					carta = getCartaMão(input);
 					this.mao.remove(input-1);
 					if(carta instanceof Criatura) {
-						campo.getArray().add(carta);
+						campo.adicionarCriatura((Criatura) carta);
 						((Criatura) carta).setEstado();
 					}
 					else if(carta instanceof Feiticos) {
@@ -211,6 +223,11 @@ public class Jogador {
 					System.out.println("Você não tem mana o suficiente!");
 				}
 	}
+
+	public void receberCarta(Carta carta){
+		this.deck.add(carta);
+	}
+
 }
 
 

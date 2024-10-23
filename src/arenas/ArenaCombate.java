@@ -20,8 +20,6 @@ public class ArenaCombate {
 
 	}
 	public void setJogadores() {
-		this.jogadores.add(new Jogador());
-		this.jogadores.add(new Jogador());
 		this.secção.add(new CartasCampo());
 		this.secção.add(new CartasCampo());
 	}
@@ -32,7 +30,7 @@ public class ArenaCombate {
 		int numeroTurno = 1;
 		while(jogadores.get(0).getVida() > 0 && jogadores.get(1).getVida() > 0) {
 				for(int i = 0; i < this.jogadores.size(); i++) {
-					System.out.printf("Vez do Jogador " + (i+1));
+					System.out.printf("Vez de " + jogadores.get(i).getNome());
 					System.out.println();
 					System.out.printf("Quantidade de mana: " + jogadores.get(i).getMana());
 					System.out.println();
@@ -149,10 +147,9 @@ public class ArenaCombate {
 		this.jogadores.get(0).setMana();
 		this.jogadores.get(1).setMana();
 		for(int i = 0; i < this.jogadores.size(); i++) {
-			this.jogadores.get(i).setDeck();
 			this.jogadores.get(i).embaralharDeck();
 			this.jogadores.get(i).setMão();
-			System.out.printf("Vez do Jogador " + (i+1));
+			System.out.printf("Vez de " + jogadores.get(i).getNome());
 			System.out.println();
 			System.out.printf("Quantidade de mana: " + jogadores.get(i).getMana());
 			System.out.println();
@@ -235,7 +232,9 @@ public class ArenaCombate {
     	System.out.printf(" Vida: " + jogadores.get(i).getVida());
     	System.out.println();
     }
-
+    public void receberJogadores(Jogador jogador) {
+		this.jogadores.add(jogador);
+	}
 
 }
 

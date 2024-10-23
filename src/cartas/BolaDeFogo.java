@@ -3,7 +3,7 @@ package cartas;
 public class BolaDeFogo extends Feiticos {
 	public BolaDeFogo(){
         super();
-        setNome("Bola de Fogo");
+        setNome(" Bola de Fogo");
         setMana(2);
         danoEfeito(1);
     }
