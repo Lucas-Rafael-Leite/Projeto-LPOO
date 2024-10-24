@@ -9,7 +9,7 @@ public class EspelhoMagico extends Feiticos{
 
     }
     public void refletirDano(Criatura destino, int danoRecebido){
-    	destino.atacarCriatura(destino);
+    	destino.atacar(destino);
     }
     
 }

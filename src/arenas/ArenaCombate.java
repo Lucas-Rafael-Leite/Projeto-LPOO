@@ -50,11 +50,12 @@ public class ArenaCombate {
 						System.out.println("Escolha uma carta para jogar no campo");
 						this.jogadores.get(i).printMão();
 						int input2 = Integer.parseInt(ler.nextLine());	
-						jogadores.get(i).jogarCarta(input2, jogadores.get(i).getCartaMão(input2), secção.get(i));;
+						jogadores.get(i).jogarCarta(input2, jogadores.get(i).getCartaMão(input2), secção.get(i));
 					}
 					if(confirma.equals("b")) {
 						if(compararJogadores(jogadores.get(i)) == false) {
 							System.out.println("Campo do Jogador " + (i+1));
+							secção.get(i).verificarCartas(jogadores.get(i));
 							secção.get(i+1).verificarCartas(jogadores.get(i+1));
 							secção.get(i).printCartasCampo();
 							System.out.println("ver o Campo do seu oponente (o) ou escolher uma carta para atacar (a)");
@@ -78,12 +79,13 @@ public class ArenaCombate {
 										secção.get(i+1).printCartasCampo();
 										int input4 = Integer.parseInt(ler.nextLine());
 										if(input4 == 0) {
-											criatura.atacarJogador(jogadores.get(i+1));
+											criatura.atacar(jogadores.get(i+1));
 											criatura.setEstado();
 										}
 										else {
 											Criatura criatura2 = (Criatura) secção.get(i+1).escolherCarta(input4);
-											criatura.atacarCriatura(criatura2);
+											criatura.atacar(criatura2);
+											criatura2.atacar(criatura);
 											criatura.setEstado();
 										}
 									}
@@ -92,6 +94,7 @@ public class ArenaCombate {
 						}
 						else {
 							System.out.println("Campo do Jogador " + (i+1));
+							secção.get(i).verificarCartas(jogadores.get(i));
 							secção.get(i).printCartasCampo();
 							secção.get(i-1).verificarCartas(jogadores.get(i-1));
 							System.out.println("ver o Campo do seu oponente (o) ou escolher uma carta para atacar (a)");
@@ -115,12 +118,13 @@ public class ArenaCombate {
 										secção.get(i-1).printCartasCampo();
 										int input4 = Integer.parseInt(ler.nextLine());
 										if(input4 == 0) {
-											criatura.atacarJogador(jogadores.get(i-1));
+											criatura.atacar(jogadores.get(i-1));
 											criatura.setEstado();
 										}
 										else {
 											Criatura criatura2 = (Criatura) secção.get(i-1).escolherCarta(input4);
-											criatura.atacarCriatura(criatura2);
+											criatura.atacar(criatura2);
+											criatura2.atacar(criatura);
 											criatura.setEstado();
 										}	
 									}
@@ -207,7 +211,7 @@ public class ArenaCombate {
 	public void verificarCriatura(int index, int input) {
 		if (secção.get(index).escolherCarta(input) instanceof Criatura) {
 			Criatura criatura = (Criatura) secção.get(index).escolherCarta(input);
-			criatura.atacarJogador(jogadores.get(index+1));
+			criatura.atacar(jogadores.get(index+1));
 		}
 	}
    

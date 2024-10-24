@@ -9,10 +9,8 @@ import jogadores.Jogador;
 
 public class CartasCampo {
 	private ArrayList<Carta> cartas;
-	private ArrayList<Feiticos> feitiços;
 	public CartasCampo() {
 		this.cartas = new ArrayList<>();
-		this.feitiços = new ArrayList<>();
 	}
 	
 	public void receberCarta(Jogador jogador, int input) {
@@ -51,7 +49,7 @@ public class CartasCampo {
 			if(cartas.get(i) instanceof Criatura) {
 				Criatura criatura = (Criatura) cartas.get(i);
 				if(criatura.getDefesa() <= 0) {
-					jogador.getCemiterio().receberCartas(criatura);
+					jogador.cemiterioReceberCartas(criatura);
 					this.cartas.remove(i);
 				}
 			}
@@ -106,9 +104,6 @@ public class CartasCampo {
 		return cartas.get(i);
 	}
 	
-	public ArrayList<Feiticos> getArrayFeitiços() {
-		return this.feitiços;
-	}
 
 	public void acordarCriaturas() {
 		for(Carta carta : cartas) {

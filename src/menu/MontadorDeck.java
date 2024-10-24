@@ -5,6 +5,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 import arenas.ArenaCombate;
+import cartas.AlmaDeMana;
 import cartas.AranhaGigante;
 import cartas.AtiradorNoturno;
 import cartas.BolaDeFogo;
@@ -70,8 +71,12 @@ public class MontadorDeck {
 	public void receberJogadores(Jogador jogador) {
 		this.jogadores.add(jogador);
 	}
+	public void resetCartas() {
+		this.cartas.removeAll(cartas);
+	}
 	public void setCartas() {
 		this.cartas.add(new Javali());
+		this.cartas.add(new AlmaDeMana());
 		this.cartas.add(new AranhaGigante());
 		this.cartas.add(new AtiradorNoturno());
 		this.cartas.add(new BolaDeFogo());
@@ -147,11 +152,13 @@ public class MontadorDeck {
 	    }
 	}
 	public void escolherCarta(Scanner ler) {
-		setCartas();
+		
 		for(int i = 0; i < this.jogadores.size(); i++) {
 			boolean escolha = true;
 			while(escolha == true) {
 				if(jogadores.get(i).getDeckSize() < 30) {
+					resetCartas();
+					setCartas();
 					System.out.println(jogadores.get(i).getNome());
 					System.out.println("Escolha 30 cartas das opções abaixo, no máximo você pode escolher duas cartas iguais");
 					printCarta();
@@ -203,10 +210,12 @@ public class MontadorDeck {
 	public void transferirJogadores(ArenaCombate arena) {
 		int indice = this.random.nextInt(this.cartas.size());
 		if(indice % 2 == 0) {
+			System.out.println(jogadores.get(0).getNome() + " vai começar jogando");
 			arena.receberJogadores(this.jogadores.get(0));
 			arena.receberJogadores(this.jogadores.get(1));
 		}
 		else {
+			System.out.println(jogadores.get(1).getNome() + " vai começar jogando");
 			arena.receberJogadores(this.jogadores.get(1));
 			arena.receberJogadores(this.jogadores.get(0));
 		}

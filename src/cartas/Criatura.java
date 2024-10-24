@@ -1,7 +1,7 @@
 package cartas;
 
 import interfaces.Atacavel;
-import jogadores.Jogador;
+
 
 public abstract class Criatura extends Carta implements Atacavel{
 	private int poder; 
@@ -20,10 +20,6 @@ public abstract class Criatura extends Carta implements Atacavel{
 		this.resistencia = this.resistencia - dano;
 	}
 	
-	public void atacarCriatura(Criatura destino) {
-		this.ataque(this.poder);
-		destino.receberDano(this.poder);
-	}
 	
 	public int getPoder() {
 		return this.poder;
@@ -33,10 +29,7 @@ public abstract class Criatura extends Carta implements Atacavel{
 		return this.resistencia;
 	}
 	
-	public void atacarJogador(Jogador destino) {
-		this.ataque(this.poder);
-		destino.receberDano(this.poder);
-	}
+	
 
 	public void setEstado() {
 		this.estado = true;
@@ -48,6 +41,11 @@ public abstract class Criatura extends Carta implements Atacavel{
 	
 	public void mudarEstado() {
 		this.estado = false;
+	}
+
+	public void atacar(Atacavel destino) {
+		this.ataque(poder);
+		destino.receberDano(poder);
 	}
 
 }

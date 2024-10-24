@@ -188,9 +188,6 @@ public class Jogador implements Atacavel {
 		this.deck.remove(input);
 	}
 	
-	public Cemiterio getCemiterio() {
-		return this.cemiterio;
-	}
 	
 	public void setNome(String nome) {
 		this.nome = nome;
@@ -216,7 +213,7 @@ public class Jogador implements Atacavel {
 						((Criatura) carta).setEstado();
 					}
 					else if(carta instanceof Feiticos) {
-						campo.getArrayFeitiços().add((Feiticos) carta);
+						
 					}
 			
 				}
@@ -227,6 +224,10 @@ public class Jogador implements Atacavel {
 
 	public void receberCarta(Carta carta){
 		this.deck.add(carta);
+	}
+
+	public void cemiterioReceberCartas(Criatura criatura) {
+		this.cemiterio.receberCartas(criatura);
 	}
 
 }
