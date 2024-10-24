@@ -1,6 +1,6 @@
 package cartas;
 
-public class Carta {
+public abstract class Carta {
 	private String nome;
 	private int custoMana;
 	
@@ -8,17 +8,13 @@ public class Carta {
 	public String toString() {
 		return nome;
     }
-	
 	public int getMana() {
 		return this.custoMana;
 	}
 	public void setMana(int mana) {
 		this.custoMana = mana;
 	}
-	
-
-
-	public void setNome(String criaturaNome) {
-		this.nome = criaturaNome;	
+	public void setNome(String nome) {
+		this.nome = nome;	
 	}
 }

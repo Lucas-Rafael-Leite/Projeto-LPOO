@@ -23,8 +23,9 @@ import cartas.Javali;
 import cartas.LeãoDaIlha;
 import cartas.LoboNeve;
 import cartas.Quimera;
+import interfaces.Atacavel;
 
-public class Jogador {
+public class Jogador implements Atacavel {
 	private String nome;
 	private int vida;
 	private int mana;

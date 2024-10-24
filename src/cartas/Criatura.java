@@ -1,8 +1,9 @@
 package cartas;
 
+import interfaces.Atacavel;
 import jogadores.Jogador;
 
-public class Criatura extends Carta{
+public abstract class Criatura extends Carta implements Atacavel{
 	private int poder; 
 	private int resistencia;
 	private boolean estado;
