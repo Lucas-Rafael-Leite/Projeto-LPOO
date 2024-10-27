@@ -1,5 +1,8 @@
 package cartas;
 
+import arenas.Cemiterio;
+import cartas.Criatura;
+
 public class CemiterioDeEspiritos extends Encantamentos{
 
     public CemiterioDeEspiritos(){
@@ -10,7 +13,14 @@ public class CemiterioDeEspiritos extends Encantamentos{
     }
     
     public void invocarEspirito(Criatura espirito){
-        for(int i = 0; i < length(carta.Cemitério); i++ ){
+        
+        int quantidadeCartasCemiterio = getQuantidadeCartas();
+
+        for(int i = 0; i < quantidadeCartasCemiterio; i++ ){
+            
+            Criatura criatura = new Criatura();
+
+            System.out.println("Espirito invocado");
             
         }
     }
