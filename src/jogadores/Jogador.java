@@ -230,6 +230,7 @@ public class Jogador implements Atacavel {
 		this.cemiterio.receberCartas(criatura);
 	}
 
+
 }
 
 

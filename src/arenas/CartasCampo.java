@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import cartas.Carta;
 import cartas.Criatura;
+import cartas.Encantamentos;
 import cartas.Feiticos;
 import jogadores.Jogador;
 
@@ -112,4 +113,32 @@ public class CartasCampo {
 			}
 		}
 	}
+
+	public boolean verificarFeiticos() {
+		boolean verdade = false;
+		for(int i = 0; i < cartas.size(); i++) {
+			if(cartas.get(i) instanceof Feiticos) {
+				verdade = true;
+			}
+			else {
+				verdade = false;
+			}
+		}
+		return verdade;
+		
+	}
+	public boolean verificarEncantamentos() {
+		boolean verdade = false;
+		for(int i = 0; i < cartas.size(); i++) {
+			if(cartas.get(i) instanceof Encantamentos) {
+				verdade = true;
+			}
+			else {
+				verdade = false;
+			}
+		}
+		return verdade;
+		
+	}
+
 }

@@ -3,7 +3,8 @@ package cartas;
 import interfaces.Atacavel;
 
 
-public abstract class Criatura extends Carta implements Atacavel{
+
+public class Criatura extends Carta implements Atacavel{
 	private int poder; 
 	private int resistencia;
 	private boolean estado;
@@ -48,6 +49,21 @@ public abstract class Criatura extends Carta implements Atacavel{
 		destino.receberDano(poder);
 	}
 
+	public void queimaduras() {
+		this.resistencia = this.resistencia - 1;
+	}
+
+	public void congelar() {
+		setEstado();
+	}
+
+	public void anular() {
+		receberDano(0);
+	}
+	
+	public void provocar() {
+		
+	}
 }
 
 

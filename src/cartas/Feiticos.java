@@ -2,7 +2,7 @@ package cartas;
 
 import java.util.ArrayList;
 
-public abstract class Feiticos extends Carta{
+public class Feiticos extends Carta{
 	    private int efeito;
 	    
 	    public void danoEfeito(int dano){

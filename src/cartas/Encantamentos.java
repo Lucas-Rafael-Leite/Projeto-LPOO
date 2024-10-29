@@ -2,7 +2,7 @@ package cartas;
 
 import java.util.ArrayList;
 
-public abstract class Encantamentos extends Carta {
+public class Encantamentos extends Carta {
 	 private int efeitoContinuo;
 
 	    public void setEfeitoContinuo(int efeitoContinuo){
