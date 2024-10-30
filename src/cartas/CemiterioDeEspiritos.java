@@ -20,9 +20,9 @@ public class CemiterioDeEspiritos extends Encantamentos{
         for(int i = 0; i < quantidadeCartasCemiterio; i++ ){
             
             Criatura criatura = new Criatura();
-            criatura.ataque(0);
             criatura.setNome(" Espirito");
             criatura.defesa(1);
+            criatura.ataque(0);
             campo.adicionarCriatura(criatura);
             System.out.println("Espirito invocado");
             
