@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import cartas.Criatura;
+import cartas.Feiticos;
 import jogadores.Jogador;
 
 
@@ -28,19 +29,16 @@ public class ArenaCombate {
 	    System.out.printf(" Vida: " + jogadores.get(i).getVida());
 	    System.out.println();
 	}
-	public void verificarCriatura(int index, int input) {
-		if (secção.get(index).escolherCarta(input) instanceof Criatura) {
-			Criatura criatura = (Criatura) secção.get(index).escolherCarta(input);
-			criatura.atacar(jogadores.get(index+1));
-		}
-	}
 	public void escolherOutraCarta(int i, Scanner ler) {
-	    System.out.printf("Quantidade de mana: " + jogadores.get(i).getMana());
+		System.out.printf("Quantidade de mana: " + jogadores.get(i).getMana());
 		System.out.println();
 		System.out.println("Escolha uma carta para jogar no campo");
 		this.jogadores.get(i).printMão();
 		int input2 = Integer.parseInt(ler.nextLine());	
 		jogadores.get(i).jogarCarta(input2, jogadores.get(i).getCartaMão(input2), secção.get(i));
+		if(secção.get(i).verificarFeiticos() == true) {
+			cartaFeiticos(i, ler);
+		}
 	}
 
 	public void faseCombate(int i, Scanner ler) {
@@ -88,6 +86,43 @@ public class ArenaCombate {
 			}
 		}
 	}
+	public void cartaFeiticos(int i, Scanner ler) {
+		int o = 1 - i;
+			Feiticos feitico = secção.get(i).feitico();
+			if(feitico.getValidação().equals("ataque um")) {
+				System.out.println("Escolha um alvo para infrigir dano");
+				System.out.print(0);
+				System.out.print(" ");
+				printJogadores(o);
+				secção.get(o).printCartasCampo();
+				int input = Integer.parseInt(ler.nextLine());
+				if(input == 0) {
+					feitico.atacar(jogadores.get(o));
+					secção.get(i).remover(feitico);
+				}
+				else {
+					Criatura criatura = (Criatura) secção.get(o).escolherCarta(input);
+					feitico.atacar(criatura);
+					secção.get(i).remover(feitico);
+				}
+			}
+			else if(feitico.getValidação().equals("cura um")) {
+				System.out.println("Escolha uma criatura para curar");
+				secção.get(i).printCartasCampo();
+				int input = Integer.parseInt(ler.nextLine());
+				Criatura criatura = (Criatura) secção.get(i).escolherCarta(input);
+				feitico.atacar(criatura);
+				secção.get(i).remover(feitico);
+			}
+			else if(feitico.getValidação().equals("ataque todos")) {
+				feitico.atacarTodasCriaturas(secção.get(o).getArray());
+				secção.get(i).remover(feitico);
+			}
+			else {
+				secção.get(i).remover(feitico);
+			}
+		}
+	
 	public void turno(int i, Scanner ler) {
 		System.out.printf("Vez de " + jogadores.get(i).getNome());
 		System.out.println();
@@ -100,37 +135,37 @@ public class ArenaCombate {
 		boolean verdade = false;
 		secção.get(i).verificarCartas(jogadores.get(i));
 		while(verdade == false) {
-			System.out.println("Jogar outra carta(c), Deseja ver o campo de batalha(b) ou terminar o turno(t)");
-			String confirma = ler.nextLine();
-			verdade = confirma.equals("t") == true;
-			if(confirma.equals("c")) {
-				escolherOutraCarta(i, ler);
+			if(secção.get(i).verificarFeiticos() == true) {
+				cartaFeiticos(i, ler);
 			}
-			if(confirma.equals("b")) {
-				faseCombate(i, ler);
-			}
+				System.out.println("Jogar outra carta(c), Deseja ver o campo de batalha(b) ou terminar o turno(t)");
+				String confirma = ler.nextLine();
+				verdade = confirma.equals("t") == true;
+				if(confirma.equals("c")) {
+					escolherOutraCarta(i, ler);
+				}
+				if(confirma.equals("b")) {
+					faseCombate(i, ler);
+				}
 		}	
     }
-	public void primeiroTurno(Scanner ler) {
+	public void primeiroTurno() {
 		setJogadores();
 		this.jogadores.get(0).setVida();
 		this.jogadores.get(1).setVida();
 		this.jogadores.get(0).setMana();
 		this.jogadores.get(1).setMana();
-		int numeroTurno = 0;
 		for(int i = 0; i < this.jogadores.size(); i++) {
 			this.jogadores.get(i).embaralharDeck();
 			this.jogadores.get(i).setMão();
-			turno(i, ler);
-			numeroTurno++;
-			jogadores.get(i).adicionarMana(numeroTurno);
-			jogadores.get(i).adicionarMão();
-			secção.get(i).acordarCriaturas();
+
 		}
 	}
 	public void vezJogador(Scanner ler) {
-		primeiroTurno(ler);
-		int numeroTurno = 1;
+		int numeroTurno = 0;
+		if(numeroTurno == 0) {
+			primeiroTurno();
+		}
 		while(jogadores.get(0).getVida() > 0 && jogadores.get(1).getVida() > 0) {
 			for(int i = 0; i < this.jogadores.size(); i++) {
 				turno(i, ler);
@@ -140,11 +175,16 @@ public class ArenaCombate {
 				jogadores.get(i).adicionarMana(numeroTurno);
 				jogadores.get(i).adicionarMão();
 				secção.get(i).acordarCriaturas();
-				
 			}		
 		}
 	}
-
+	public void mudarTurno(int numeroTurno) {
+		for(int i = 0; i < jogadores.size(); i++) {
+			jogadores.get(i).adicionarMana(numeroTurno);
+			jogadores.get(i).adicionarMão();
+			secção.get(i).acordarCriaturas();
+		}
+	}
 }
 
 

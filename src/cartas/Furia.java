@@ -5,5 +5,6 @@ public class Furia extends Feiticos {
 	        setNome(" Furia");
 	        setMana(3);
 	        danoEfeito(2);
+	        setValidação("ataque");
 	    }
 }

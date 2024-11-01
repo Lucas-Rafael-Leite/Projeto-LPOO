@@ -5,6 +5,7 @@ public class SerpenteGigante extends Criatura {
 		super();
 		ataque(4);
 		defesa(6);
+		defesaMax(6);
 		setNome(" Serpente Gigante");
 		setMana(5);
 	}

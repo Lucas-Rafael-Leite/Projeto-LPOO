@@ -5,6 +5,7 @@ public class ZebraTroia extends Criatura {
 		super();
 		ataque(1);
 		defesa(5);
+		defesaMax(5);
 		setNome(" Zebra de Troia");
 		setMana(4);
 	}

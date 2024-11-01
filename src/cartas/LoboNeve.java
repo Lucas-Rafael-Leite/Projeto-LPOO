@@ -5,6 +5,7 @@ public class LoboNeve extends Criatura {
 		super();
 		ataque(2);
 		defesa(3);
+		defesaMax(3);
 		setNome(" Lobo da Neve");
 		setMana(2);
 	}

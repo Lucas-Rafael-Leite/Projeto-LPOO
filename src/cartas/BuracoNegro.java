@@ -5,6 +5,7 @@ public class BuracoNegro extends Feiticos{
         super();
         setNome("Buraco Negro");
         setMana(8);
-        danoEfeito(10); 
+        danoEfeito(10);
+        setValidação("ataque um");
     }
 }

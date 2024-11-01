@@ -6,6 +6,7 @@ public class BolaDeFogo extends Feiticos {
         setNome(" Bola de Fogo");
         setMana(2);
         danoEfeito(1);
+        setValidação("ataque um");
     }
     
     public void queimaduras(Criatura destino){

@@ -5,6 +5,7 @@ public class LoboElétrico extends Criatura {
 		super();
 		ataque(4);
 		defesa(2);
+		defesaMax(2);
 		setNome(" Lobo Elétrico");
 		setMana(3);
 	}

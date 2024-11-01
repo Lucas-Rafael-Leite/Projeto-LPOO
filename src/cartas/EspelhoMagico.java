@@ -6,6 +6,7 @@ public class EspelhoMagico extends Feiticos{
         setNome(" EspelhoMagico");
         setMana(6);
         danoEfeito(0);
+        setValidação("ataque");
 
     }
     public void refletirDano(Criatura destino, int danoRecebido){

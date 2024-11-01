@@ -8,6 +8,7 @@ public class AlmaDeMana extends Feiticos {
         setNome(" Alma de Mana");
         setMana(-1);
         danoEfeito(0);
+        setValidação("");
     }
 
 }

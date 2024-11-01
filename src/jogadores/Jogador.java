@@ -15,7 +15,6 @@ import cartas.Criatura;
 import cartas.DragaoFogo;
 import cartas.DragãoDaMontanha;
 import cartas.EspiritoDeAgua;
-import cartas.Feiticos;
 import cartas.GiganteOuro;
 import cartas.GigantePlatina;
 import cartas.GolemDePedra;
@@ -212,8 +211,8 @@ public class Jogador implements Atacavel {
 						campo.adicionarCriatura((Criatura) carta);
 						((Criatura) carta).setEstado();
 					}
-					else if(carta instanceof Feiticos) {
-						
+					else{
+						campo.adicionarCriatura(carta);
 					}
 			
 				}

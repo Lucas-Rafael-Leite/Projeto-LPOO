@@ -6,6 +6,7 @@ public class Cura extends Feiticos {
         setNome(" Cura");
         setMana(3);
         danoEfeito(-2);
+        setValidação("cura um");
     }
 
 }

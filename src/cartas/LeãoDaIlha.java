@@ -5,6 +5,7 @@ public class LeãoDaIlha extends Criatura{
 		super();
 		ataque(3);
 		defesa(4);
+		defesaMax(4);
 		setNome(" Leão da Ilha");
 		setMana(4);
 	}

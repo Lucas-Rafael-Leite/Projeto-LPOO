@@ -5,6 +5,7 @@ public class Leviatã extends Criatura {
 		super();
 		ataque(6);
 		defesa(6);
+		defesaMax(6);
 		setNome(" Leviatã");
 		setMana(8);
 	}

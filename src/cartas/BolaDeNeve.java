@@ -6,5 +6,6 @@ public class BolaDeNeve extends Feiticos {
 	        setMana(2);
 	        setNome(" Bola de Neve");
 	        danoEfeito(1);
+	        setValidação("ataque um");
 	    }
 }

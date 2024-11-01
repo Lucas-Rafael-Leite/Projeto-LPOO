@@ -6,5 +6,6 @@ public class Escudo extends Feiticos{
         setNome(" Escudo");
         setMana(3);
         danoEfeito(-2);
+        setValidação("ataque");
     }
 }

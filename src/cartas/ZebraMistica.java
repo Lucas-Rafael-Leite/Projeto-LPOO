@@ -5,6 +5,7 @@ public class ZebraMistica extends Criatura {
 		super();
 		ataque(3);
 		defesa(4);
+		defesaMax(4);
 		setNome(" Zebra Mística");
 		setMana(4);
 	}

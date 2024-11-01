@@ -5,6 +5,7 @@ public class DragãoDaMontanha extends Criatura {
 		super();
 		ataque(2);
 		defesa(7);
+		defesaMax(7);
 		setNome(" Dragão da Montanha");
 		setMana(5);
 	}

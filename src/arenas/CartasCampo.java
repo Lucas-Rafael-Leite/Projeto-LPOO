@@ -33,7 +33,7 @@ public class CartasCampo {
 		}
 	}
 	
-	public void adicionarCriatura(Criatura criatura) {
+	public void adicionarCriatura(Carta criatura) {
 		this.cartas.add(criatura);
 	}
 	
@@ -92,8 +92,9 @@ public class CartasCampo {
 	public ArrayList<Carta> getArray() {
 		return cartas;
 	}
+	
 
-	public void remover(Criatura escolherCarta) {
+	public void remover(Carta escolherCarta) {
 		this.cartas.remove(escolherCarta);
 		
 	}
@@ -127,6 +128,16 @@ public class CartasCampo {
 		return verdade;
 		
 	}
+	public Feiticos feitico() {
+		Carta carta = null;
+		for(Carta carta1 : cartas) {
+			if(carta1 instanceof Feiticos) {
+				carta1 = (Feiticos) carta1;
+				carta = carta1;
+			}
+		}
+		return (Feiticos) carta;
+	}
 	public boolean verificarEncantamentos() {
 		boolean verdade = false;
 		for(int i = 0; i < cartas.size(); i++) {
@@ -140,5 +151,5 @@ public class CartasCampo {
 		return verdade;
 		
 	}
-
+	
 }

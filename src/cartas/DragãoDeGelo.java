@@ -5,6 +5,7 @@ public class DragãoDeGelo extends Criatura {
 		super();
 		ataque(2);
 		defesa(5);
+		defesaMax(5);
 		setNome(" Dragão de Gelo");
 		setMana(4);
 	}

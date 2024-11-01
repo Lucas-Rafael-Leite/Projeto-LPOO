@@ -5,5 +5,6 @@ public class Trovao extends Feiticos {
         setNome(" Trovão");
         setMana(4);
         danoEfeito(3);
+        setValidação("ataque um");
     }
 }

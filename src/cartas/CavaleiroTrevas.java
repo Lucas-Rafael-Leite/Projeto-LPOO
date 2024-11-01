@@ -5,6 +5,7 @@ public class CavaleiroTrevas extends Criatura{
 		super();
 		ataque(2);
 		defesa(6);
+		defesaMax(6);
 		setNome(" Cavaleiro das Trevas");
 		setMana(5);
 	}

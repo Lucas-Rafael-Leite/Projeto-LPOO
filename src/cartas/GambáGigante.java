@@ -5,6 +5,7 @@ public class GambáGigante extends Criatura {
 		super();
 		ataque(2);
 		defesa(5);
+		defesaMax(5);
 		setNome(" Gambá Gigante");
 		setMana(4);
 	}
