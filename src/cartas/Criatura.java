@@ -1,5 +1,7 @@
 package cartas;
 
+import java.util.ArrayList;
+
 import interfaces.Atacavel;
 
 
@@ -7,27 +9,31 @@ import interfaces.Atacavel;
 public class Criatura extends Carta implements Atacavel{
 	private int poder; 
 	private int resistencia;
-	private int maxResistencia;
 	private boolean estado;
+	private ArrayList<Encantamentos> encantamento;
 	
+	public void adicionarEncantamento(Encantamentos encantamento){
+		encantamento.add(encantamento);
+	}
+	
+	public void removerEncantamento(Encantamentos encantamento){
+		encantamento.remove(encantamento);
+	}
+
+	public ArrayList<Encantamentos> getArrayList(){
+		return encantamento;
+	}
+
 	public void ataque(int dano) {
 		this.poder = dano;
 	}
+	
 	public void defesa(int defesa) {
 		this.resistencia = defesa;
-	}
-	public int getDefesaMax() {
-		return this.maxResistencia;
-	}
-	public void defesaMax(int defesa) {
-		this.maxResistencia = defesa;
 	}
 	
 	public void receberDano(int dano) {
 		this.resistencia = this.resistencia - dano;
-		if(this.resistencia > this.maxResistencia) {
-			this.resistencia = this.maxResistencia;
-		}
 	}
 	
 	
@@ -39,6 +45,8 @@ public class Criatura extends Carta implements Atacavel{
 		return this.resistencia;
 	}
 	
+	
+
 	public void setEstado() {
 		this.estado = true;
 	}
@@ -73,5 +81,7 @@ public class Criatura extends Carta implements Atacavel{
 	}
 
 }
+
+
 
 
