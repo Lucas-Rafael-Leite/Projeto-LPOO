@@ -5,6 +5,7 @@ public class VelocidadeDeAtaque extends Encantamentos {
         super();
         setNome("Velocidade de Ataque");
         setMana(3);
+        setValidacao("Buff");
 
     }
 
