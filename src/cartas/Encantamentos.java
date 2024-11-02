@@ -3,11 +3,16 @@ package cartas;
 import java.util.ArrayList;
 
 public class Encantamentos extends Carta {
-	 private int efeitoContinuo;
+	private int efeitoContinuo;
+	private String validacao;
 
-	    public void setEfeitoContinuo(int efeitoContinuo){
-	        this.efeitoContinuo = efeitoContinuo;
-	    }
+		public void setValidacao(String validacao){
+			this.validacao = validacao;
+		}
+		
+		public String getValidacao(){
+			return this.validacao;
+		}
 
 	    public void danoEfeitoContinuo(int dano){
 	        this.efeitoContinuo = dano ;
@@ -33,5 +38,8 @@ public class Encantamentos extends Carta {
 	    }
 }
 	    
+	
+
+
 	
 
