@@ -1,11 +1,13 @@
 package cartas;
-
+        
 public class Fortalecimento extends Encantamentos{
-    public Fortalecimento(){
+    public Fortalecimento(){       
         super();
         setMana(3);
-        setNome(" Fortalecimento");
-        setEfeitoContinuo(1);
+        setNome("Fortalecimento");
+        danoEfeitoContinuo(1);
+        setValidacao("Buff");
+
     }
 
 }
