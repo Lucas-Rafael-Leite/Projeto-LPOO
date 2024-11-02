@@ -1,10 +1,12 @@
 package cartas;
 
-public class Enfraquecimento extends Encantamentos {
-	public Enfraquecimento(){
+public class Enfraquecimento extends Encantamentos{
+    
+    public Enfraquecimento(){
         super();
-        setNome(" Enfraquecimento");
+        setNome("Enfraquecimento");
         setMana(3);
-        setEfeitoContinuo(1);
+        danoEfeitoContinuo(1);
+        setValidacao("Debuff");
     }
 }
