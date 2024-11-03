@@ -15,6 +15,7 @@ import cartas.Criatura;
 import cartas.DragaoFogo;
 import cartas.DragãoDaMontanha;
 import cartas.EspiritoDeAgua;
+import cartas.Feiticos;
 import cartas.GiganteOuro;
 import cartas.GigantePlatina;
 import cartas.GolemDePedra;
@@ -22,6 +23,7 @@ import cartas.Javali;
 import cartas.LeãoDaIlha;
 import cartas.LoboNeve;
 import cartas.Quimera;
+import excecoes.ManaInsuficienteException;
 import interfaces.Atacavel;
 
 public class Jogador implements Atacavel {
@@ -88,23 +90,6 @@ public class Jogador implements Atacavel {
 		return this.mao.size();
 	}
 
-	
-	public Carta jogarCarta(int numeroInput) {
-		Carta carta = null;
-		for(int i = 0; i < this.mao.size(); i++) {
-			if(numeroInput == i+1) {
-				if(mao.get(i).getMana() <= this.mana) {
-					this.mana = this.mana - mao.get(i).getMana();
-					carta = mao.get(i);
-					this.mao.remove(i);
-				}
-				else {
-					carta = null;
-				}
-			}
-		}
-		return carta;
-	}
 	public void printMão() {
 		int i = 1;
 		for(Carta carta : this.mao) {
@@ -196,30 +181,35 @@ public class Jogador implements Atacavel {
 		return this.nome;
 	}
 
-	public void jogarCarta(int input, Carta carta, CartasCampo campo) {
-		if(input > this.mao.size()) {
+	public void jogarCarta(int input, Carta carta, CartasCampo campo) throws ManaInsuficienteException{
+		try {
+			if(input > this.mao.size()) {
 			
-		}
-		else if(input == 0) {
+			}
+			else if(input == 0) {
+				
+			}
+			else if (getCartaMão(input).getMana() > this.mana) {
+				
+				throw new ManaInsuficienteException("Mana insuficiente");
 			
-		}
-		else if(getCartaMão(input).getMana() <= this.mana) {
-					this.mana = this.mana - getCartaMão(input).getMana();
-					carta = getCartaMão(input);
-					this.mao.remove(input-1);
+			}
+			else{	
+				
+				this.mana = this.mana - getCartaMão(input).getMana();
+				carta = getCartaMão(input);
+				this.mao.remove(input-1);
 					if(carta instanceof Criatura) {
-						campo.adicionarCriatura((Criatura) carta);
-						((Criatura) carta).setEstado();
+							campo.adicionarCriatura((Criatura) carta);
+							((Criatura) carta).setEstado();
 					}
-					else{
-						campo.adicionarCriatura(carta);
+					else if(carta instanceof Feiticos) {
 					}
-			
-				}
-				else {
-					System.out.println("Você não tem mana o suficiente!");
-				}
-	}
+			}
+
+		}catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
 
 	public void receberCarta(Carta carta){
 		this.deck.add(carta);
@@ -231,7 +221,3 @@ public class Jogador implements Atacavel {
 
 
 }
-
-
-	
-	
