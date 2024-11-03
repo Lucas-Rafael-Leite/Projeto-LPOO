@@ -65,7 +65,7 @@ public class Jogador implements Atacavel {
 		return this.vida;
 	}
 	public void setVida(){
-		this.vida = 1;
+		this.vida = 15;
 	}
 	public int getMana() {
 		return this.mana;
