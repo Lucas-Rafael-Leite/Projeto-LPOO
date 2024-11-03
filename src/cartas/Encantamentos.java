@@ -2,23 +2,24 @@ package cartas;
 
 import java.util.ArrayList;
 
-public class Encantamentos extends Carta {
-	private int efeitoContinuo;
-	private String validacao;
+import interfaces.Atacavel;
 
-		public void setValidacao(String validacao){
+public class Encantamentos extends Carta {
+	 private int efeitoContinuo;
+	 private String validacao;
+	   
+	    public void setValidacao(String validacao){
 			this.validacao = validacao;
 		}
 		
 		public String getValidacao(){
 			return this.validacao;
 		}
-
 	    public void danoEfeitoContinuo(int dano){
 	        this.efeitoContinuo = dano ;
 	    }
 	    
-	    public void atacarCriatura(Criatura destino) {
+	    public void atacar(Atacavel destino) {
 			this.danoEfeitoContinuo(this.efeitoContinuo);
 			destino.receberDano(this.efeitoContinuo);
 	    }
@@ -38,8 +39,5 @@ public class Encantamentos extends Carta {
 	    }
 }
 	    
-	
-
-
 	
 

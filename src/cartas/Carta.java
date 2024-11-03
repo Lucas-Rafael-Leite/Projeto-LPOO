@@ -1,5 +1,7 @@
 package cartas;
 
+import interfaces.Atacavel;
+
 public abstract class Carta {
 	private String nome;
 	private int custoMana;
@@ -17,4 +19,5 @@ public abstract class Carta {
 	public void setNome(String nome) {
 		this.nome = nome;	
 	}
+	public abstract void atacar(Atacavel destino);
 }

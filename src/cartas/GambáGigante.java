@@ -6,7 +6,8 @@ public class GambáGigante extends Criatura {
 		ataque(2);
 		defesa(5);
 		defesaMax(5);
-		setNome(" Gambá Gigante");
+		setNome("Gambá Gigante");
 		setMana(4);
+		setId("16");
 	}
 }

@@ -6,7 +6,8 @@ public class EspiritoDeAgua extends Criatura{
 		ataque(1);
 		defesa(1);
 		defesaMax(1);
-		setNome(" Espirito de Água");
+		setNome("Espirito de Água");
 		setMana(1);
+		setId("13");
 	}
 }

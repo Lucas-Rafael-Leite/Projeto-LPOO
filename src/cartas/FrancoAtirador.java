@@ -6,7 +6,8 @@ public class FrancoAtirador extends Criatura {
 		ataque(4);
 		defesa(3);
 		defesaMax(3);
-		setNome(" Franco Atirador");
+		setNome("Franco Atirador");
 		setMana(4);
+		setId("15");
 	}
 }

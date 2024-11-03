@@ -6,7 +6,8 @@ public class DragãoDaTempestade extends Criatura {
 		ataque(4);
 		defesa(4);
 		defesaMax(4);
-		setNome(" Dragão da Tempestade");
+		setNome("Dragão da Tempestade");
 		setMana(5);
+		setId("8");
 	}
 }

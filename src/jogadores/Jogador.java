@@ -5,24 +5,10 @@ import java.util.Random;
 
 import arenas.CartasCampo;
 import arenas.Cemiterio;
-import cartas.AlmaDeMana;
-import cartas.AranhaGigante;
-import cartas.AtiradorNoturno;
+import cartas.AtributosGeraisCriaturas;
 import cartas.Carta;
-import cartas.Cavaleiro;
-import cartas.ChuvaDeFlechas;
+
 import cartas.Criatura;
-import cartas.DragaoFogo;
-import cartas.DragãoDaMontanha;
-import cartas.EspiritoDeAgua;
-import cartas.Feiticos;
-import cartas.GiganteOuro;
-import cartas.GigantePlatina;
-import cartas.GolemDePedra;
-import cartas.Javali;
-import cartas.LeãoDaIlha;
-import cartas.LoboNeve;
-import cartas.Quimera;
 import excecoes.ManaInsuficienteException;
 import interfaces.Atacavel;
 
@@ -30,6 +16,10 @@ public class Jogador implements Atacavel {
 	private String nome;
 	private int vida;
 	private int mana;
+	private int vez;
+	private int nivel;
+	private int vitorias;
+	private int derrotas;
 	private ArrayList<Carta> mao;
 	private ArrayList<Carta> deck;
 	private Cemiterio cemiterio;
@@ -40,13 +30,42 @@ public class Jogador implements Atacavel {
 		this.deck = new ArrayList<>();
 		 this.random = new Random();
 		 this.cemiterio = new Cemiterio();
+		 this.nivel = 1;
+		 this.vitorias = 0;
+		 this.derrotas = 0;
 	}
-
+	public void setVez(int vez) {
+		this.vez = vez;
+	}
+	public int getVez() {
+		return this.vez;
+	}
+	public void passarVez() {
+		this.vez = this.vez + 1;
+	}
+	public int getNivel() {
+		return this.nivel;
+	}
+	public void evoluirNivel() {
+		this.nivel = this.nivel + 1;
+	}
+	public int getVitorias() {
+		return this.vitorias;
+	}
+	public void venceu() {
+		this.vitorias = this.vitorias + 1;
+	}
+	public int getDerrotas() {
+		return this.derrotas;
+	}
+	public void perdeu() {
+		this.derrotas = this.derrotas + 1;
+	}
 	public int getVida(){
 		return this.vida;
 	}
 	public void setVida(){
-		this.vida = 30;
+		this.vida = 1;
 	}
 	public int getMana() {
 		return this.mana;
@@ -54,6 +73,7 @@ public class Jogador implements Atacavel {
 	public void setMana() {
 		this.mana = 1;
 	}
+
 	public void adicionarMana(int input) {
 		setMana();
 		for(int i = 0; i < input; i++) {
@@ -90,49 +110,20 @@ public class Jogador implements Atacavel {
 		return this.mao.size();
 	}
 
+	
+	
 	public void printMão() {
 		int i = 1;
 		for(Carta carta : this.mao) {
 			System.out.print(i);
+			System.out.print(" ");
 			System.out.print(carta);
 			System.out.printf(" custo de mana: " + carta.getMana());
 			System.out.println();
 			i++;
 		}
 	}
-	public void setDeck(){
-		this.deck.add(new Javali());
-		this.deck.add(new Javali());
-		this.deck.add(new GigantePlatina());
-		this.deck.add(new GigantePlatina());
-		this.deck.add(new DragaoFogo());
-		this.deck.add(new DragaoFogo());
-		this.deck.add(new LoboNeve());
-		this.deck.add(new LoboNeve());
-		this.deck.add(new ChuvaDeFlechas());
-		this.deck.add(new ChuvaDeFlechas());
-		this.deck.add(new AlmaDeMana());
-		this.deck.add(new AlmaDeMana());
-		this.deck.add(new EspiritoDeAgua());
-		this.deck.add(new EspiritoDeAgua());
-		this.deck.add(new Quimera());
-		this.deck.add(new Quimera());
-		this.deck.add(new Cavaleiro());
-		this.deck.add(new Cavaleiro());
-		this.deck.add(new LeãoDaIlha());
-		this.deck.add(new LeãoDaIlha());
-		this.deck.add(new GolemDePedra());
-		this.deck.add(new GolemDePedra());
-		this.deck.add(new AtiradorNoturno());
-		this.deck.add(new AtiradorNoturno());
-		this.deck.add(new AranhaGigante());
-		this.deck.add(new AranhaGigante());
-		this.deck.add(new DragãoDaMontanha());
-		this.deck.add(new DragãoDaMontanha());
-		this.deck.add(new GiganteOuro());
-		this.deck.add(new GiganteOuro());
 	
-	}
 	
 	public int getDeckSize() {
 		return this.deck.size();
@@ -162,6 +153,7 @@ public class Jogador implements Atacavel {
 		int i = 1;
 		for(Carta carta: this.deck) {
 			System.out.print(i);
+			System.out.print(" ");
 			System.out.print(carta);
 			System.out.println();
 			i++;
@@ -181,7 +173,7 @@ public class Jogador implements Atacavel {
 		return this.nome;
 	}
 
-	public void jogarCarta(int input, Carta carta, CartasCampo campo) throws ManaInsuficienteException{
+	public void jogarCarta(int input, int vez, Carta carta, CartasCampo campo) throws ManaInsuficienteException{
 		try {
 			if(input > this.mao.size()) {
 			
@@ -199,25 +191,57 @@ public class Jogador implements Atacavel {
 				this.mana = this.mana - getCartaMão(input).getMana();
 				carta = getCartaMão(input);
 				this.mao.remove(input-1);
-					if(carta instanceof Criatura) {
-							campo.adicionarCriatura((Criatura) carta);
-							((Criatura) carta).setEstado();
-					}
-					else if(carta instanceof Feiticos) {
-					}
+				if(carta instanceof Criatura) {
+					campo.adicionarCriatura((Criatura) carta);
+					((Criatura) carta).setEstado();
+					((Criatura) carta).setVez(vez);
+					((Criatura) carta).setQueimado();
+				}
+
+				else{
+					campo.adicionarCriatura(carta);
+				}
+
 			}
 
 		}catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
+	}
 
 	public void receberCarta(Carta carta){
 		this.deck.add(carta);
 	}
 
-	public void cemiterioReceberCartas(Criatura criatura) {
+	public void cemiterioReceberCartas(Carta criatura) {
 		this.cemiterio.receberCartas(criatura);
 	}
 
+	public Carta getCartaDeck(int input) {
+		return this.deck.get(input);
+	}
 
+	public void transferirCemiterioDeck() {
+		this.cemiterio.transferirCartasDeck(this);
+	}
+	public void resetAtributosCriaturas(AtributosGeraisCriaturas tabela) {
+		for(Carta carta : this.deck) {
+			if(carta instanceof Criatura) {
+				tabela.tabelaDeAtributos((Criatura) carta);
+			}
+		}
+	}
+	public void transferirMaoDeck() {
+	    for (int i = this.mao.size() - 1; i >= 0; i--) {
+	        this.deck.add(this.mao.get(i));
+	        this.mao.remove(i);
+	    }
+	}
+	public int getCemiterioSize() {
+		return this.cemiterio.getQuantidadeCartas();
+	}
 }
+
+
+	
+	

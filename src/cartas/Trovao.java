@@ -1,10 +1,14 @@
 package cartas;
 
+
+
 public class Trovao extends Feiticos {
     public Trovao(){
-        setNome(" Trovão");
+        setNome("Trovão");
         setMana(4);
         danoEfeito(3);
         setValidação("ataque um");
     }
+    
+   
 }

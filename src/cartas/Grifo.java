@@ -6,7 +6,8 @@ public class Grifo extends Criatura {
 		ataque(3);
 		defesa(6);
 		defesaMax(6);
-		setNome(" Grifo");
+		setNome("Grifo");
 		setMana(5);
+		setId("23");
 	}
 }

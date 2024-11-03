@@ -1,11 +1,17 @@
 package cartas;
 
+
+
 public class Escudo extends Feiticos{
 	public Escudo(){
         super();
-        setNome(" Escudo");
+        setNome("Escudo");
         setMana(3);
         danoEfeito(-2);
         setValidação("ataque");
     }
+	 public  void jogarFeitico(Criatura destino, int turnoAtual) {
+	    	
+	    }
+
 }

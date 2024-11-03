@@ -14,24 +14,6 @@ public class CartasCampo {
 		this.cartas = new ArrayList<>();
 	}
 	
-	public void receberCarta(Jogador jogador, int input) {
-		int n = jogador.getMãoSize();
-		for(int i = 0; i < n+1; i++) {
-			if(input == i) {
-				Carta carta = jogador.jogarCarta(i);
-				if(carta == null) {
-					System.out.println("Você não tem mana o suficiente!");
-				}
-				else if(carta instanceof Feiticos){
-					
-				}
-				else {
-					this.cartas.add(carta);
-				}
-			}
-
-		}
-	}
 	
 	public void adicionarCriatura(Carta criatura) {
 		this.cartas.add(criatura);
@@ -49,6 +31,7 @@ public class CartasCampo {
 		for(int i = 0; i < cartas.size(); i++) {
 			if(cartas.get(i) instanceof Criatura) {
 				Criatura criatura = (Criatura) cartas.get(i);
+				criatura.queimaduras();
 				if(criatura.getDefesa() <= 0) {
 					jogador.cemiterioReceberCartas(criatura);
 					this.cartas.remove(i);
@@ -66,7 +49,11 @@ public class CartasCampo {
 			if(carta instanceof Criatura) {
 				Criatura criatura = (Criatura) carta;
 				System.out.print(n);
+				System.out.print(" ");
 				System.out.print(criatura);
+				if(criatura.getQueimado() == true) {
+					System.out.print(" (Queimado)");
+				}
 				System.out.printf(" poder: " + criatura.getPoder());
 				System.out.printf(" resitencia: " + criatura.getDefesa());
 				System.out.println();
@@ -106,7 +93,13 @@ public class CartasCampo {
 		return cartas.get(i);
 	}
 	
-
+	public void passarVezCriatura(int vez) {
+		for(Carta carta : cartas) {
+			if (carta instanceof Criatura) {
+				((Criatura) carta).setVez(vez);
+			}
+		}
+	}
 	public void acordarCriaturas() {
 		for(Carta carta : cartas) {
 			if (carta instanceof Criatura) {
@@ -151,5 +144,10 @@ public class CartasCampo {
 		return verdade;
 		
 	}
-	
+	public void transferirCampoDeck(Jogador jogador) {
+		for(int i = this.cartas.size() - 1; i >= 0; i--) {
+			jogador.receberCarta(cartas.get(i));
+			cartas.remove(i);
+		}
+	}
 }

@@ -6,8 +6,9 @@ public class DragaoFogo extends Criatura {
 		ataque(3);
 		defesa(5);
 		defesaMax(5);
-		setNome(" Dragão de Fogo");
+		setNome("Dragão de Fogo");
 		setMana(4);
+		setId("11");
 	}
 
 }

@@ -1,41 +1,58 @@
 package cartas;
 
-import java.util.ArrayList;
+
 
 import interfaces.Atacavel;
 
 
 
 public class Criatura extends Carta implements Atacavel{
+	private String id;
 	private int poder; 
 	private int resistencia;
+	private int maxResistencia;
+	private int vezAtual;
+	private int vezEfeito;
 	private boolean estado;
-	private ArrayList<Encantamentos> encantamento;
+	private boolean queimado;
 	
-	public void adicionarEncantamento(Encantamentos encantamento){
-		encantamento.add(encantamento);
+	public void setId(String id) {
+		this.id = id;
 	}
-	
-	public void removerEncantamento(Encantamentos encantamento){
-		encantamento.remove(encantamento);
+	public String getId() {
+		return this.id;
 	}
-
-	public ArrayList<Encantamentos> getArrayList(){
-		return encantamento;
+	public void setVez(int vez) {
+		this.vezAtual = vez;
 	}
-
+	public int getVez() {
+		return this.vezAtual;
+	}
+	public void setVezEfeito(int vez) {
+		this.vezEfeito = vez;
+	}
+	public int getVezEfeito() {
+		return this.vezEfeito;
+	}
 	public void ataque(int dano) {
 		this.poder = dano;
 	}
-	
 	public void defesa(int defesa) {
 		this.resistencia = defesa;
+	}
+	public int getDefesaMax() {
+		return this.maxResistencia;
+	}
+	public void defesaMax(int defesa) {
+		this.maxResistencia = defesa;
 	}
 	
 	public void receberDano(int dano) {
 		this.resistencia = this.resistencia - dano;
+		if(this.resistencia > this.maxResistencia) {
+			this.resistencia = this.maxResistencia;
+		}
 	}
-	
 	
 	public int getPoder() {
 		return this.poder;
@@ -45,8 +62,6 @@ public class Criatura extends Carta implements Atacavel{
 		return this.resistencia;
 	}
 	
-	
-
 	public void setEstado() {
 		this.estado = true;
 	}
@@ -64,12 +79,24 @@ public class Criatura extends Carta implements Atacavel{
 		destino.receberDano(poder);
 	}
 
-	public void queimaduras() {
-		this.resistencia = this.resistencia - 1;
+	public void setQueimado() {
+		this.queimado = false;
 	}
-
-	public void congelar() {
-		setEstado();
+	public void queimado(int vez) {
+		setVezEfeito(vez);
+		this.queimado = true;
+		
+	}
+	public boolean getQueimado() {
+		return this.queimado;
+	}
+	public void queimaduras() {
+		if(this.queimado == true) {
+			if(this.vezAtual == this.vezEfeito + 1) {
+				this.resistencia = this.resistencia - 1;
+				this.queimado = false;
+			}
+		}
 	}
 
 	public void anular() {
@@ -81,7 +108,5 @@ public class Criatura extends Carta implements Atacavel{
 	}
 
 }
-
-
 
 

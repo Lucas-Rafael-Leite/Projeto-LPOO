@@ -1,7 +1,6 @@
 package cartas;
 
 public class Envenenamento extends Encantamentos {
-
     public Envenenamento(){
         super();
         setNome("Enveneamento");
@@ -9,5 +8,4 @@ public class Envenenamento extends Encantamentos {
         danoEfeitoContinuo(1);
         setValidacao("Debuff");
     }
-
 }

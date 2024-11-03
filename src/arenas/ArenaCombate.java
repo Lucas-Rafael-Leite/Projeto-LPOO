@@ -3,19 +3,29 @@ package arenas;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import cartas.AtributosGeraisCriaturas;
 import cartas.Criatura;
 import cartas.Feiticos;
+import excecoes.ManaInsuficienteException;
 import jogadores.Jogador;
+import menu.FimDaBatalha;
 
 
 public class ArenaCombate {
 	private ArrayList<Jogador> jogadores;
 	private ArrayList<CartasCampo> secção;
-
+	private ArrayList<AtributosGeraisCriaturas> tabela;
+	private int numeroTurno;
 	
 	public ArenaCombate() {
 		this.jogadores = new ArrayList<>();
 		this.secção = new ArrayList<>();
+		this.numeroTurno = 0;
+		this.tabela = new ArrayList<>();
+		this.tabela.add(new AtributosGeraisCriaturas());
+	}
+	public void resetTurno() {
+		this.numeroTurno = 0;
 	}
 	public void setJogadores() {
 		this.secção.add(new CartasCampo());
@@ -29,13 +39,13 @@ public class ArenaCombate {
 	    System.out.printf(" Vida: " + jogadores.get(i).getVida());
 	    System.out.println();
 	}
-	public void escolherOutraCarta(int i, Scanner ler) {
+	public void escolherOutraCarta(int i, Scanner ler) throws ManaInsuficienteException {
 		System.out.printf("Quantidade de mana: " + jogadores.get(i).getMana());
 		System.out.println();
 		System.out.println("Escolha uma carta para jogar no campo");
 		this.jogadores.get(i).printMão();
 		int input2 = Integer.parseInt(ler.nextLine());	
-		jogadores.get(i).jogarCarta(input2, jogadores.get(i).getCartaMão(input2), secção.get(i));
+		jogadores.get(i).jogarCarta(input2, this.numeroTurno, jogadores.get(i).getCartaMão(input2), secção.get(i));
 		if(secção.get(i).verificarFeiticos() == true) {
 			cartaFeiticos(i, ler);
 		}
@@ -98,11 +108,14 @@ public class ArenaCombate {
 				int input = Integer.parseInt(ler.nextLine());
 				if(input == 0) {
 					feitico.atacar(jogadores.get(o));
+					jogadores.get(i).cemiterioReceberCartas(feitico);
 					secção.get(i).remover(feitico);
 				}
 				else {
 					Criatura criatura = (Criatura) secção.get(o).escolherCarta(input);
 					feitico.atacar(criatura);
+					feitico.jogarFeitico(criatura, jogadores.get(i).getVez());
+					jogadores.get(i).cemiterioReceberCartas(feitico);
 					secção.get(i).remover(feitico);
 				}
 			}
@@ -112,42 +125,56 @@ public class ArenaCombate {
 				int input = Integer.parseInt(ler.nextLine());
 				Criatura criatura = (Criatura) secção.get(i).escolherCarta(input);
 				feitico.atacar(criatura);
+				jogadores.get(i).cemiterioReceberCartas(feitico);
 				secção.get(i).remover(feitico);
 			}
 			else if(feitico.getValidação().equals("ataque todos")) {
 				feitico.atacarTodasCriaturas(secção.get(o).getArray());
+				jogadores.get(i).cemiterioReceberCartas(feitico);
 				secção.get(i).remover(feitico);
 			}
 			else {
+				jogadores.get(i).cemiterioReceberCartas(feitico);
 				secção.get(i).remover(feitico);
 			}
 		}
 	
-	public void turno(int i, Scanner ler) {
-		System.out.printf("Vez de " + jogadores.get(i).getNome());
-		System.out.println();
-		System.out.printf("Quantidade de mana: " + jogadores.get(i).getMana());
-		System.out.println();
-		System.out.println("Escolha uma carta para jogar no campo");
-		this.jogadores.get(i).printMão();
-		int input = Integer.parseInt(ler.nextLine());	
-		jogadores.get(i).jogarCarta(input, jogadores.get(i).getCartaMão(input), secção.get(i));
-		boolean verdade = false;
-		secção.get(i).verificarCartas(jogadores.get(i));
-		while(verdade == false) {
-			if(secção.get(i).verificarFeiticos() == true) {
-				cartaFeiticos(i, ler);
+	public void turno(int i, Scanner ler) throws ManaInsuficienteException {
+		if(jogadores.get(i).getVida() > 0 && jogadores.get(1-i).getVida() > 0) {
+			System.out.printf("Vez de " + jogadores.get(i).getNome());
+			System.out.println();
+			System.out.printf("Quantidade de mana: " + jogadores.get(i).getMana());
+			System.out.println();
+			System.out.println("Escolha uma carta para jogar no campo");
+			if(this.numeroTurno != 0) {
+				jogadores.get(i).passarVez();
 			}
-				System.out.println("Jogar outra carta(c), Deseja ver o campo de batalha(b) ou terminar o turno(t)");
-				String confirma = ler.nextLine();
-				verdade = confirma.equals("t") == true;
-				if(confirma.equals("c")) {
-					escolherOutraCarta(i, ler);
+			secção.get(i).passarVezCriatura(jogadores.get(1-i).getVez());
+			this.jogadores.get(i).printMão();
+			int input = Integer.parseInt(ler.nextLine());	
+			jogadores.get(i).jogarCarta(input, this.numeroTurno ,jogadores.get(i).getCartaMão(input), secção.get(i));
+			boolean verdade = false;
+			secção.get(i).verificarCartas(jogadores.get(i));
+			while(verdade == false) {
+				if(secção.get(i).verificarFeiticos() == true) {
+					cartaFeiticos(i, ler);
 				}
-				if(confirma.equals("b")) {
-					faseCombate(i, ler);
+				if(jogadores.get(1-i).getVida() > 0) {
+					System.out.println("Jogar outra carta(c), Deseja ver o campo de batalha(b) ou terminar o turno(t)");
+					String confirma = ler.nextLine();
+					verdade = confirma.equals("t") == true;
+					if(confirma.equals("c")) {
+						escolherOutraCarta(i, ler);
+					}
+					if(confirma.equals("b")) {
+						faseCombate(i, ler);
+					}
 				}
-		}	
+				else {
+					verdade = true;
+				}
+			}
+		}			
     }
 	public void primeiroTurno() {
 		setJogadores();
@@ -155,24 +182,25 @@ public class ArenaCombate {
 		this.jogadores.get(1).setVida();
 		this.jogadores.get(0).setMana();
 		this.jogadores.get(1).setMana();
+		this.jogadores.get(0).setVez(numeroTurno);
+		this.jogadores.get(1).setVez(numeroTurno);
 		for(int i = 0; i < this.jogadores.size(); i++) {
 			this.jogadores.get(i).embaralharDeck();
 			this.jogadores.get(i).setMão();
 
 		}
 	}
-	public void vezJogador(Scanner ler) {
-		int numeroTurno = 0;
-		if(numeroTurno == 0) {
+	public void vezJogador(Scanner ler) throws ManaInsuficienteException {
+		if(this.numeroTurno == 0) {
 			primeiroTurno();
 		}
 		while(jogadores.get(0).getVida() > 0 && jogadores.get(1).getVida() > 0) {
 			for(int i = 0; i < this.jogadores.size(); i++) {
 				turno(i, ler);
 			}
-			numeroTurno++;
+			this.numeroTurno++;
 			for(int i = 0; i < jogadores.size(); i++) {
-				jogadores.get(i).adicionarMana(numeroTurno);
+				jogadores.get(i).adicionarMana(this.numeroTurno);
 				jogadores.get(i).adicionarMão();
 				secção.get(i).acordarCriaturas();
 			}		
@@ -183,6 +211,30 @@ public class ArenaCombate {
 			jogadores.get(i).adicionarMana(numeroTurno);
 			jogadores.get(i).adicionarMão();
 			secção.get(i).acordarCriaturas();
+		}
+	}
+	public void jogadoresResetDeck() {
+		jogadores.get(0).transferirCemiterioDeck();
+		jogadores.get(0).transferirMaoDeck();
+		secção.get(0).transferirCampoDeck(jogadores.get(0));
+		jogadores.get(0).resetAtributosCriaturas(this.tabela.get(0));
+		this.tabela.remove(0);
+		this.tabela.add(new AtributosGeraisCriaturas());
+		jogadores.get(1).transferirCemiterioDeck();
+		jogadores.get(1).transferirMaoDeck();
+		secção.get(1).transferirCampoDeck(jogadores.get(1));
+		jogadores.get(1).resetAtributosCriaturas(this.tabela.get(0));
+		this.tabela.remove(0);
+		this.tabela.add(new AtributosGeraisCriaturas());
+	}
+	public void removerJogadores() {
+	    for(int i = this.jogadores.size() - 1; i >= 0; i--) {
+	        jogadores.remove(i);
+	    }
+	}
+	public void transferirJogadores(FimDaBatalha fim) {
+		for(int i = 0; i < jogadores.size(); i++) {
+			fim.receberJogadores(jogadores.get(i));
 		}
 	}
 }

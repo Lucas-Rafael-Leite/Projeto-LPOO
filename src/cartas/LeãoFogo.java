@@ -6,7 +6,8 @@ public class LeãoFogo extends Criatura{
 		ataque(3);
 		defesa(2);
 		defesaMax(2);
-		setNome(" Leão de Fogo");
+		setNome("Leão de Fogo");
 		setMana(2);
+		setId("27");
 	}
 }

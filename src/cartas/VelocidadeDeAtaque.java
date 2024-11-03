@@ -10,6 +10,6 @@ public class VelocidadeDeAtaque extends Encantamentos {
     }
 
     public void velocidadeAtaque(Criatura destino){
-        destino.ataque(getPoder()*2); ;
+        destino.ataque(destino.getPoder()*2); ;
     }
 }

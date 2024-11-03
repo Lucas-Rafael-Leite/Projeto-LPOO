@@ -6,7 +6,8 @@ public class CavaleiroLuz extends Criatura {
 		ataque(4);
 		defesa(4);
 		defesaMax(4);
-		setNome(" Cavaleiro da Luz");
+		setNome("Cavaleiro da Luz");
 		setMana(5);
+		setId("4");
 	}
 }

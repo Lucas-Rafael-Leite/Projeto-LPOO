@@ -6,7 +6,8 @@ public class GiganteFerro extends Criatura {
 		ataque(1);
 		defesa(7);
 		defesaMax(7);
-		setNome(" Gigante de Ferro");
+		setNome("Gigante de Ferro");
 		setMana(4);
+		setId("17");
 	}
 }

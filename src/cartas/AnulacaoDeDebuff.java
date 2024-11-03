@@ -1,6 +1,6 @@
 package cartas;
 
-import java.util.ArrayList;
+
 
 public class AnulacaoDeDebuff extends Encantamentos{
 
@@ -13,15 +13,7 @@ public class AnulacaoDeDebuff extends Encantamentos{
     
     public void verificarCriatura(Criatura destino){
         
-        ArrayList<Encantamentos> = destino.getArrayList();
-
-        for (ArrayList<Encantamentos> : encantamento) {
-
-            if(encantamento.getValidacao.equals("Debuff")){
-                destino.removerEncantamento(encantamento);
-            }
-
-        }
+        
     }
 
 }

@@ -6,7 +6,8 @@ public class Quimera extends Criatura{
 		ataque(5);
 		defesa(3);
 		defesaMax(3);
-		setNome(" Quimera");
+		setNome("Quimera");
 		setMana(4);
+		setId("32");
 	}
 }

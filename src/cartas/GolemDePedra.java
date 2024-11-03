@@ -6,7 +6,8 @@ public class GolemDePedra extends Criatura {
 		ataque(1);
 		defesa(7);
 		defesaMax(7);
-		setNome(" Golem de Pedra");
+		setNome("Golem de Pedra");
 		setMana(4);
+		setId("20");
 	}
 }

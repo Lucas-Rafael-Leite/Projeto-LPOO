@@ -2,6 +2,7 @@ package cartas;
 
 import java.util.ArrayList;
 
+
 import interfaces.Atacavel;
 
 public class Feiticos extends Carta{
@@ -36,4 +37,8 @@ public class Feiticos extends Carta{
 	    public String getValidação() {
 	    	return this.validação;
 	    }
+	    public  void jogarFeitico(Criatura destino, int turnoAtual) {
+	    	
+	    }
+	   
 }

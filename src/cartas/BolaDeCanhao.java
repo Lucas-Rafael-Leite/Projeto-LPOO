@@ -8,6 +8,7 @@ public class BolaDeCanhao extends Feiticos {
         setNome("Bola de canhão");
         setMana(3);
         danoEfeito(2);
+        setValidação("ataque um");
     }
 
 

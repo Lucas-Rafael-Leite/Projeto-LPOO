@@ -6,7 +6,8 @@ public class AranhaGigante extends Criatura {
 		ataque(5);
 		defesa(4);
 		defesaMax(4);
-		setNome(" Aranha Gigante");
+		setNome("Aranha Gigante");
 		setMana(5);
+		setId("1");
 	}
 }

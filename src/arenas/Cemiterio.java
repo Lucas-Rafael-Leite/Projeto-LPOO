@@ -3,7 +3,8 @@ package arenas;
 import java.util.ArrayList;
 
 import cartas.Carta;
-import cartas.Criatura;
+import jogadores.Jogador;
+
 
 
 
@@ -13,11 +14,17 @@ public class Cemiterio {
 	public Cemiterio() {
 		this.cartas = new ArrayList<>();
 	}
-	public void receberCartas(Criatura criatura) {
+	public void receberCartas(Carta criatura) {
 		this.cartas.add(criatura);
 	}
 	public int getQuantidadeCartas() {
 		return this.cartas.size();
+	}
+	public void transferirCartasDeck(Jogador jogador) {
+		for(int i = this.cartas.size() - 1; i >= 0; i--) {
+			jogador.receberCarta(this.cartas.get(i));
+			this.cartas.remove(i);
+		}
 	}
 }
 

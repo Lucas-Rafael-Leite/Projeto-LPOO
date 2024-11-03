@@ -5,7 +5,9 @@ public class AtiradorNoturno extends Criatura{
 		super();
 		ataque(3);
 		defesa(3);
-		setNome(" Atirador Noturno");
+		defesaMax(3);
+		setNome("Atirador Noturno");
 		setMana(3);
+		setId("2");
 	}
 }

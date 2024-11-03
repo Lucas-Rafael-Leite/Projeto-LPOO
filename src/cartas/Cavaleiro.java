@@ -6,7 +6,8 @@ public class Cavaleiro extends Criatura{
 		ataque(3);
 		defesa(3);
 		defesaMax(3);
-		setNome(" Cavaleiro");
+		setNome("Cavaleiro");
 		setMana(2);
+		setId("3");
 	}
 }

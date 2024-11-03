@@ -6,7 +6,8 @@ public class LeãoTrevas extends Criatura {
 		ataque(2);
 		defesa(2);
 		defesaMax(2);
-		setNome(" Leão das Trevas");
+		setNome("Leão das Trevas");
 		setMana(2);
+		setId("28");
 	}
 }

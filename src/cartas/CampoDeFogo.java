@@ -8,7 +8,7 @@ public class CampoDeFogo extends Encantamentos {
         setNome("Campo de Fogo");
         setMana(4);
         danoEfeitoContinuo(1);
-        setValidacao("Buff");
+        setValidacao("Debuff");
 
     }
     

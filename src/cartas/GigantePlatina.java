@@ -6,8 +6,9 @@ public class GigantePlatina extends Criatura {
 		ataque(1);
 		defesa(8);
 		defesaMax(8);
-		setNome(" Gigante de Platina");
+		setNome("Gigante de Platina");
 		setMana(6);
+		setId("19");
 	}
 
 }

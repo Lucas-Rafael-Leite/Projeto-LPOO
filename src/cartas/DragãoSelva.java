@@ -6,7 +6,8 @@ public class DragãoSelva extends Criatura {
 		ataque(3);
 		defesa(6);
 		defesaMax(6);
-		setNome(" Dragão da Selva");
+		setNome("Dragão da Selva");
 		setMana(4);
+		setId("12");
 	}
 }
