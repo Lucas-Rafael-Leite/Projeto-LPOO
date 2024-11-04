@@ -323,7 +323,7 @@ public class MontadorDeck {
 								String input2 = ler.nextLine();
 								if(input2.equals("r")){
 									jogadores.get(i).printDeck();
-									System.out.println("digite o número da carta que você dejesa remover");
+									System.out.println("digite o número da carta que você deseja remover");
 									int num2 = Integer.parseInt(ler.nextLine());
 									jogadores.get(i).removerCartaDeck(num2-1);
 								}
