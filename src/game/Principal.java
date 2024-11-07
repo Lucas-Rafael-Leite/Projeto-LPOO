@@ -6,10 +6,11 @@ import menu.FimDaBatalha;
 import menu.MontadorDeck;
 import menu.NomearJogadores;
 import arenas.ArenaCombate;
+import excecoes.CreatureCannotAttackException;
 import excecoes.ManaInsuficienteException;
 
 public class Principal {
-	public static void main(String[] args) throws ManaInsuficienteException {
+	public static void main(String[] args) throws ManaInsuficienteException, CreatureCannotAttackException {
 		NomearJogadores nomeio = new NomearJogadores();
 		MontadorDeck deck = new MontadorDeck();
 		ArenaCombate arena = new ArenaCombate();

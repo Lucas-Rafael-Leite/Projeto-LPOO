@@ -6,6 +6,7 @@ import java.util.Scanner;
 import cartas.AtributosGeraisCriaturas;
 import cartas.Criatura;
 import cartas.Feiticos;
+import excecoes.CreatureCannotAttackException;
 import excecoes.ManaInsuficienteException;
 import jogadores.Jogador;
 import menu.FimDaBatalha;
@@ -51,7 +52,7 @@ public class ArenaCombate {
 		}
 	}
 
-	public void faseCombate(int i, Scanner ler) {
+	public void faseCombate(int i, Scanner ler) throws CreatureCannotAttackException {
 	    int o = 1 - i;
 	    System.out.println("Campo de " + jogadores.get(i).getNome());
 		secção.get(i).verificarCartas(jogadores.get(i));
@@ -67,32 +68,36 @@ public class ArenaCombate {
 			combate(i, o, ler);
 		}
 	}
-	public void combate(int i, int o, Scanner ler) {
+	public void combate(int i, int o, Scanner ler) throws CreatureCannotAttackException {
 	    System.out.println("Escolha uma criatura do seu campo para atacar ");
 		secção.get(i).printCartasCampo();
 		int input3 = Integer.parseInt(ler.nextLine());
 		if (secção.get(i).escolherCarta(input3) instanceof Criatura) {
 			Criatura criatura = (Criatura) secção.get(i).escolherCarta(input3);
-			if(criatura.getEstado() == true) {
-				System.out.println("A criatura não pode atacar!");
-			}
-			else {
+			try {
+				if(criatura.getEstado() == true) {
+					throw new CreatureCannotAttackException("A criatura não pode atacar!");
+				}
+				else {
 				System.out.println("Agora escolha um alvo para ser atacado");
 				System.out.print(0);
 				System.out.print(" ");
 				printJogadores(o);
 				secção.get(o).printCartasCampo();
 				int input4 = Integer.parseInt(ler.nextLine());
-				if(input4 == 0) {
+					if(input4 == 0) {
 					criatura.atacar(jogadores.get(o));
 					criatura.setEstado();
-				}
-				else {
+					}
+					else {
 					Criatura criatura2 = (Criatura) secção.get(o).escolherCarta(input4);
 					criatura.atacar(criatura2);
 					criatura2.atacar(criatura);
 					criatura.setEstado();
-				}	
+					}	
+				}
+			}catch (Exception e) {
+				System.out.println(e.getMessage());
 			}
 		}
 	}
@@ -139,7 +144,7 @@ public class ArenaCombate {
 			}
 		}
 	
-	public void turno(int i, Scanner ler) throws ManaInsuficienteException {
+	public void turno(int i, Scanner ler) throws ManaInsuficienteException, CreatureCannotAttackException {
 		if(jogadores.get(i).getVida() > 0 && jogadores.get(1-i).getVida() > 0) {
 			System.out.printf("Vez de " + jogadores.get(i).getNome());
 			System.out.println();
@@ -190,7 +195,7 @@ public class ArenaCombate {
 
 		}
 	}
-	public void vezJogador(Scanner ler) throws ManaInsuficienteException {
+	public void vezJogador(Scanner ler) throws ManaInsuficienteException, CreatureCannotAttackException {
 		if(this.numeroTurno == 0) {
 			primeiroTurno();
 		}
