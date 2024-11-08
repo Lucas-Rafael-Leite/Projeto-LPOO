@@ -60,6 +60,7 @@ import cartas.VelocidadeDeAtaque;
 import cartas.VentosRevigorantes;
 import cartas.ZebraMistica;
 import cartas.ZebraTroia;
+import excecoes.EmptyDeckException;
 import jogadores.Jogador;
 
 public class MontadorDeck {
@@ -254,7 +255,7 @@ public class MontadorDeck {
 	    }
 	}
 
-	public void escolherCarta(Scanner ler) {
+	public void escolherCarta(Scanner ler) throws EmptyDeckException {
 		
 		for(int i = 0; i < this.jogadores.size(); i++) {
 			System.out.println(jogadores.get(i).getNome());
@@ -314,10 +315,11 @@ public class MontadorDeck {
 							jogadores.get(i).receberCarta(this.cartas.get(num-1));
 						}
 						else if(input1.equals("d")) {
-							if(jogadores.get(i).getDeckSize() == 0) {
-								System.out.println("seu deck está vazio!");
-							}
-							else {
+							try {
+								if(jogadores.get(i).getDeckSize() == 0) {
+								throw new EmptyDeckException("Seu deck está vazio!");
+								}
+								else {
 								jogadores.get(i).printDeck();
 								System.out.println("Deseja remover alguma carta (r)");
 								String input2 = ler.nextLine();
@@ -326,10 +328,13 @@ public class MontadorDeck {
 									System.out.println("digite o número da carta que você deseja remover");
 									int num2 = Integer.parseInt(ler.nextLine());
 									jogadores.get(i).removerCartaDeck(num2-1);
+									}
 								}
-							}
+						}catch (Exception e) {
+							System.out.println(e.getMessage());
 						}
 					}
+				}
 					else {
 						System.out.println("Seu deck está cheio, deseja olhar seu deck (d) ou terminar a montagem do deck (t)");
 						String input1 = ler.nextLine();
