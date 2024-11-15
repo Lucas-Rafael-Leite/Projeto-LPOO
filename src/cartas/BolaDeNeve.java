@@ -11,7 +11,7 @@ public class BolaDeNeve extends Feiticos {
 	    setValidação("ataque um");
 	    }
 	public void jogarFeitico(Criatura destino, int turnoAtual) {
-		
+		destino.congelado(turnoAtual);
 	}
 	
 }

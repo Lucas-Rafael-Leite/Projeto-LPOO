@@ -15,6 +15,7 @@ public class Criatura extends Carta implements Atacavel{
 	private int vezEfeito;
 	private boolean estado;
 	private boolean queimado;
+	private boolean congelado;
 	
 	public void setId(String id) {
 		this.id = id;
@@ -99,14 +100,28 @@ public class Criatura extends Carta implements Atacavel{
 		}
 	}
 
-	public void anular() {
-		receberDano(0);
+	public void setCongelado() {
+		this.congelado = false;
 	}
-	
-	public void provocar() {
+	public boolean getCongelado() {
+		return this.congelado;
+	}
+	public void congelado(int vez) {
+		setVezEfeito(vez);
+		this.congelado = true;
+	}
+	public void gelado() {
+		if(this.congelado == true) {
+			if(this.vezAtual == this.vezEfeito) {
+				this.estado = true;
+			}
+			else if(this.vezAtual == this.vezEfeito + 1) {
+				this.congelado = false;
+				this.estado = false;
+			}
+		}
 		
 	}
-
 }
 
 

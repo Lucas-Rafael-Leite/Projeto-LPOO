@@ -32,6 +32,7 @@ public class CartasCampo {
 			if(cartas.get(i) instanceof Criatura) {
 				Criatura criatura = (Criatura) cartas.get(i);
 				criatura.queimaduras();
+				criatura.gelado();
 				if(criatura.getDefesa() <= 0) {
 					jogador.cemiterioReceberCartas(criatura);
 					this.cartas.remove(i);
@@ -53,6 +54,9 @@ public class CartasCampo {
 				System.out.print(criatura);
 				if(criatura.getQueimado() == true) {
 					System.out.print(" (Queimado)");
+				}
+				if(criatura.getCongelado() == true) {
+					System.out.print(" (Congelado)");
 				}
 				System.out.printf(" poder: " + criatura.getPoder());
 				System.out.printf(" resitencia: " + criatura.getDefesa());
