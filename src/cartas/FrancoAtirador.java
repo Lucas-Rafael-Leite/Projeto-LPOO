@@ -9,5 +9,6 @@ public class FrancoAtirador extends Criatura {
 		setNome("Franco Atirador");
 		setMana(4);
 		setId("15");
+		mudarEstado();
 	}
 }

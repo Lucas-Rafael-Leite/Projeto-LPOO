@@ -9,5 +9,6 @@ public class LeãoTrevas extends Criatura {
 		setNome("Leão das Trevas");
 		setMana(2);
 		setId("28");
+		mudarEstado();
 	}
 }

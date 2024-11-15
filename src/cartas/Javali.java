@@ -9,5 +9,6 @@ public class Javali extends Criatura {
 		setNome("Javali Selvagem");
 		setMana(1);
 		setId("24");
+		mudarEstado();
 	}
 }

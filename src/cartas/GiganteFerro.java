@@ -9,5 +9,6 @@ public class GiganteFerro extends Criatura {
 		setNome("Gigante de Ferro");
 		setMana(4);
 		setId("17");
+		mudarEstado();
 	}
 }

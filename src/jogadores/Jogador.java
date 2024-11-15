@@ -193,9 +193,8 @@ public class Jogador implements Atacavel {
 				this.mao.remove(input-1);
 				if(carta instanceof Criatura) {
 					campo.adicionarCriatura((Criatura) carta);
-					((Criatura) carta).setEstado();
 					((Criatura) carta).setVez(vez);
-					((Criatura) carta).setQueimado();
+					
 				}
 
 				else{

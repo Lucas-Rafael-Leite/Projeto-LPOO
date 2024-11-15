@@ -256,103 +256,19 @@ public class MontadorDeck {
 	}
 
 	public void escolherCarta(Scanner ler) throws EmptyDeckException {
-		
 		for(int i = 0; i < this.jogadores.size(); i++) {
-			System.out.println(jogadores.get(i).getNome());
-			System.out.println("Você deseja escolher dois decks pré-definidos (p) ou escolher cada carta (c) ");
-			String input = ler.nextLine();
-			if(input.equals("p")) {
-				boolean escolha = true;
-				while(escolha == true) {
-					resetDeck();
-					resetDeck2();
-					setDeck();
-					setDeck2();
-					System.out.println("Você pode escolher entre o primeiro e segundo deck (e) ou olhar as cartas de algum desses decks (o)");
-					String input1 = ler.nextLine();
-					if(input1.equals("e")) {
-						System.out.println("Você quer o primeiro (p) ou o segundo (s) deck");
-						String input2 = ler.nextLine();
-						if(input2.equals("p")) {
-							for(int n = 0; n < this.deck.size(); n++) {
-								jogadores.get(i).receberCarta(this.deck.get(n));
-							}
-							escolha = false;
-						}
-						else if(input2.equals("s")) {
-							for(int n = 0; n < this.deck2.size(); n++) {
-								jogadores.get(i).receberCarta(this.deck2.get(n));
-							}
-							escolha = false;
-						}
-					}
-					else if(input1.equals("o")) {
-						System.out.println("Você quer ver o primeiro (p) ou o segundo (s) deck");
-						String input2 = ler.nextLine();
-						if(input2.equals("p")) {
-							printDeck();
-						}
-						else if(input2.equals("s")) {
-							printDeck2();
-						}
-					}
+			boolean escolha = true;
+			while( escolha == true) {
+				System.out.println(jogadores.get(i).getNome());
+				System.out.println("Você deseja escolher dois decks pré-definidos (p) ou escolher cada carta (c) ");
+				String input = ler.nextLine();
+				if(input.equals("p")) {
+					escolherPreDefinido(ler, i);
+					escolha = false;
 				}
-				
-			}
-			else if(input.equals("c")) {
-				boolean escolha = true;
-				while(escolha == true) {
-					if(jogadores.get(i).getDeckSize() < 30) {
-						resetCartas();
-						setCartas();
-						System.out.println(jogadores.get(i).getNome());
-						System.out.println("Escolha 30 cartas das opções abaixo, no máximo você pode escolher duas cartas iguais");
-						printCarta();
-						System.out.println("Deseja ver o seu deck (d)");
-						String input1 = ler.nextLine();
-						if(isNumeric(input1) == true) {
-							int num = Integer.parseInt(input1);
-							jogadores.get(i).receberCarta(this.cartas.get(num-1));
-						}
-						else if(input1.equals("d")) {
-							try {
-								if(jogadores.get(i).getDeckSize() == 0) {
-								throw new EmptyDeckException("Seu deck está vazio!");
-								}
-								else {
-								jogadores.get(i).printDeck();
-								System.out.println("Deseja remover alguma carta (r)");
-								String input2 = ler.nextLine();
-								if(input2.equals("r")){
-									jogadores.get(i).printDeck();
-									System.out.println("digite o número da carta que você deseja remover");
-									int num2 = Integer.parseInt(ler.nextLine());
-									jogadores.get(i).removerCartaDeck(num2-1);
-									}
-								}
-						}catch (Exception e) {
-							System.out.println(e.getMessage());
-						}
-					}
-				}
-					else {
-						System.out.println("Seu deck está cheio, deseja olhar seu deck (d) ou terminar a montagem do deck (t)");
-						String input1 = ler.nextLine();
-						if(input1.equals("d")) {
-							jogadores.get(i).printDeck();
-							System.out.println("Deseja remover alguma carta (r)");
-							String input2 = ler.nextLine();
-							if(input2.equals("r")){
-								jogadores.get(i).printDeck();
-								System.out.println("digite o número da carta que você deseja remover");
-								int num2 = Integer.parseInt(ler.nextLine());
-								jogadores.get(i).removerCartaDeck(num2-1);
-							}
-						}
-						else if(input1.equals("t")) {
-							escolha = false;
-						}
-					}
+				else if(input.equals("c")) {
+					escolherCadaCarta(ler, i);
+					escolha = false;
 				}
 			}
 		}
@@ -371,6 +287,98 @@ public class MontadorDeck {
 			arena.receberJogadores(this.jogadores.get(0));
 		}
 	}
-
+	public void escolherPreDefinido(Scanner ler, int i) {
+		boolean escolha = true;
+		while(escolha == true) {
+			resetDeck();
+			resetDeck2();
+			setDeck();
+			setDeck2();
+			System.out.println("Você pode escolher entre o primeiro e segundo deck (e) ou olhar as cartas de algum desses decks (o)");
+			String input1 = ler.nextLine();
+			if(input1.equals("e")) {
+				System.out.println("Você quer o primeiro (p) ou o segundo (s) deck");
+				String input2 = ler.nextLine();
+				if(input2.equals("p")) {
+					for(int n = 0; n < this.deck.size(); n++) {
+						jogadores.get(i).receberCarta(this.deck.get(n));
+					}
+					escolha = false;
+				}
+				else if(input2.equals("s")) {
+					for(int n = 0; n < this.deck2.size(); n++) {
+						jogadores.get(i).receberCarta(this.deck2.get(n));
+					}
+					escolha = false;
+				}
+			}
+			else if(input1.equals("o")) {
+				System.out.println("Você quer ver o primeiro (p) ou o segundo (s) deck");
+				String input2 = ler.nextLine();
+				if(input2.equals("p")) {
+					printDeck();
+				}
+				else if(input2.equals("s")) {
+					printDeck2();
+				}
+			}
+		}
+	}
+	public void escolherCadaCarta(Scanner ler, int i) {
+		boolean escolha = true;
+		while(escolha == true) {
+			if(jogadores.get(i).getDeckSize() < 30) {
+				resetCartas();
+				setCartas();
+				System.out.println(jogadores.get(i).getNome());
+				System.out.println("Escolha 30 cartas das opções abaixo, no máximo você pode escolher duas cartas iguais");
+				printCarta();
+				System.out.println("Deseja ver o seu deck (d)");
+				String input1 = ler.nextLine();
+				if(isNumeric(input1) == true) {
+					int num = Integer.parseInt(input1);
+					jogadores.get(i).receberCarta(this.cartas.get(num-1));
+				}
+				else if(input1.equals("d")) {
+					try {
+						if(jogadores.get(i).getDeckSize() == 0) {
+						throw new EmptyDeckException("Seu deck está vazio!");
+						}
+						else {
+						jogadores.get(i).printDeck();
+						System.out.println("Deseja remover alguma carta (r)");
+						String input2 = ler.nextLine();
+						if(input2.equals("r")){
+							jogadores.get(i).printDeck();
+							System.out.println("digite o número da carta que você deseja remover");
+							int num2 = Integer.parseInt(ler.nextLine());
+							jogadores.get(i).removerCartaDeck(num2-1);
+							}
+						}
+				}catch (Exception e) {
+					System.out.println(e.getMessage());
+				}
+			}
+		}
+			else {
+				System.out.println("Seu deck está cheio, deseja olhar seu deck (d) ou terminar a montagem do deck (t)");
+				String input1 = ler.nextLine();
+				if(input1.equals("d")) {
+					jogadores.get(i).printDeck();
+					System.out.println("Deseja remover alguma carta (r)");
+					String input2 = ler.nextLine();
+					if(input2.equals("r")){
+						jogadores.get(i).printDeck();
+						System.out.println("digite o número da carta que você deseja remover");
+						int num2 = Integer.parseInt(ler.nextLine());
+						jogadores.get(i).removerCartaDeck(num2-1);
+					}
+				}
+				else if(input1.equals("t")) {
+					escolha = false;
+				}
+			}
+		}
+	}
 }
 

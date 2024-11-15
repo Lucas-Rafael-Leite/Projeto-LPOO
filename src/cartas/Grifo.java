@@ -9,5 +9,6 @@ public class Grifo extends Criatura {
 		setNome("Grifo");
 		setMana(5);
 		setId("23");
+		mudarEstado();
 	}
 }

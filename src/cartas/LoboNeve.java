@@ -10,4 +10,7 @@ public class LoboNeve extends Criatura {
 		setMana(2);
 		setId("31");
 	}
+	public void congelado(int vez) {
+		setCongelado();
+	}
 }

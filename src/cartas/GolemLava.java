@@ -9,5 +9,6 @@ public class GolemLava extends Criatura {
 		setNome("Golem de Lava");
 		setMana(4);
 		setId("22");
+		mudarEstado();
 	}
 }

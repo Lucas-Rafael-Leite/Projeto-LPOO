@@ -16,7 +16,11 @@ public class Criatura extends Carta implements Atacavel{
 	private boolean estado;
 	private boolean queimado;
 	private boolean congelado;
-	
+	public Criatura() {
+		setEstado();
+		setQueimado();
+		setCongelado();
+	}
 	public void setId(String id) {
 		this.id = id;
 	}
@@ -86,6 +90,7 @@ public class Criatura extends Carta implements Atacavel{
 	public void queimado(int vez) {
 		setVezEfeito(vez);
 		this.queimado = true;
+		this.congelado = false;
 		
 	}
 	public boolean getQueimado() {

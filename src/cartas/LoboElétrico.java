@@ -9,5 +9,6 @@ public class LoboElétrico extends Criatura {
 		setNome("Lobo Elétrico");
 		setMana(3);
 		setId("30");
+		mudarEstado();
 	}
 }
