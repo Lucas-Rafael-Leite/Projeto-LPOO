@@ -138,6 +138,29 @@ public class ArenaCombate {
 				jogadores.get(i).cemiterioReceberCartas(feitico);
 				secção.get(i).remover(feitico);
 			}
+			else if(feitico.getValidação().equals("ataque")) {
+				System.out.println("Escolha uma criatura para aumentar o ataque");
+				secção.get(i).printCartasCampo();
+				int input = Integer.parseInt(ler.nextLine());
+				Criatura criatura = (Criatura) secção.get(i).escolherCarta(input);
+				int novoAtaque = criatura.getPoder() + feitico.getEfeito();
+				criatura.ataque(novoAtaque);
+				jogadores.get(i).cemiterioReceberCartas(feitico);
+				secção.get(i).remover(feitico);
+				
+			}
+			else if(feitico.getValidação().equals("defesa")) {
+				System.out.println("Escolha uma criatura para aumentar a resistencia");
+				secção.get(i).printCartasCampo();
+				int input = Integer.parseInt(ler.nextLine());
+				Criatura criatura = (Criatura) secção.get(i).escolherCarta(input);
+				int novaDefesa = criatura.getDefesa() + feitico.getEfeito();
+				int novaDefasaMax = criatura.getDefesaMax() + feitico.getEfeito();
+				criatura.defesa(novaDefesa);
+				criatura.defesaMax(novaDefasaMax);
+				jogadores.get(i).cemiterioReceberCartas(feitico);
+				secção.get(i).remover(feitico);
+			}
 			else {
 				jogadores.get(i).cemiterioReceberCartas(feitico);
 				secção.get(i).remover(feitico);
