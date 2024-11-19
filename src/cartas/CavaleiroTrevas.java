@@ -10,4 +10,7 @@ public class CavaleiroTrevas extends Criatura{
 		setMana(5);
 		setId("5");
 	}
+	public void queimado(int vez) {
+		setQueimado();
+	}
 }
