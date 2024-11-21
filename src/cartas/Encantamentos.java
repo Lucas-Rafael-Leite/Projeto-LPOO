@@ -18,17 +18,20 @@ public class Encantamentos extends Carta {
 	    public void danoEfeitoContinuo(int dano){
 	        this.efeitoContinuo = dano ;
 	    }
+	    public int getDanoEfeitoContinuo() {
+	    	return this.efeitoContinuo;
+	    }
 	    
 	    public void atacar(Atacavel destino) {
 			this.danoEfeitoContinuo(this.efeitoContinuo);
 			destino.receberDano(this.efeitoContinuo);
 	    }
 	    
-	    public void buffTodos(int efeito, ArrayList<Criatura> criaturas){
-	        for(int i = 0; i < criaturas.size(); i++) {
-	        	int ataque = criaturas.get(i).getPoder();
+	    public void buffTodos(int efeito, ArrayList<Carta> arrayList){
+	        for(int i = 0; i < arrayList.size(); i++) {
+	        	int ataque = ((Criatura) arrayList.get(i)).getPoder();
 	        	ataque += efeito;
-	        	criaturas.get(i).ataque(ataque);
+	        	((Criatura) arrayList.get(i)).ataque(ataque);
 	        }
 	    }
 	    
@@ -37,6 +40,7 @@ public class Encantamentos extends Carta {
 	        ataque += dano;
 	        destino.ataque(ataque);
 	    }
+	   
 }
 	    
 	

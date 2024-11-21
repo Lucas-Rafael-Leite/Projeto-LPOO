@@ -1,5 +1,7 @@
 package cartas;
 
+import java.util.ArrayList;
+
 public class CampoDeFogo extends Encantamentos {
     
     public CampoDeFogo(){
@@ -8,8 +10,13 @@ public class CampoDeFogo extends Encantamentos {
         setNome("Campo de Fogo");
         setMana(4);
         danoEfeitoContinuo(1);
-        setValidacao("Debuff");
+        setValidacao("Debuff todos");
 
+    }
+    public void buffTodos(int efeito, ArrayList<Carta> criaturas){
+        for(int i = 0; i < criaturas.size(); i++) {
+        	((Criatura) criaturas.get(i)).queimado(efeito);
+        }
     }
     
 

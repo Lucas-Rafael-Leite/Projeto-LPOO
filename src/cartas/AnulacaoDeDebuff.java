@@ -9,11 +9,20 @@ public class AnulacaoDeDebuff extends Encantamentos{
         super();
         setNome("Anulação de Debuff");
         setMana(3);
+        setValidacao("Anulação Debuff");
     }
     
-    public void verificarCriatura(Criatura destino){
-        
-        
+    public void buffUm(int dano, Criatura destino){
+        if(destino.getCongelado() == true) {
+        	destino.setCongelado();
+        	destino.mudarEstado();
+        }
+        if(destino.getQueimado() == true) {
+        	destino.setQueimado();
+        }
+        if(destino.getEnvenenado() == true) {
+        	destino.setEnvenenado();
+        }
     }
 
 }

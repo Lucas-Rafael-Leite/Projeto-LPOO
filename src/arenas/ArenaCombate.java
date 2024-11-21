@@ -5,9 +5,11 @@ import java.util.Scanner;
 
 import cartas.AtributosGeraisCriaturas;
 import cartas.Criatura;
+import cartas.Encantamentos;
 import cartas.Feiticos;
 import excecoes.CreatureCannotAttackException;
 import excecoes.ManaInsuficienteException;
+import excecoes.NoSpecialStatusException;
 import jogadores.Jogador;
 import menu.FimDaBatalha;
 
@@ -49,6 +51,9 @@ public class ArenaCombate {
 		jogadores.get(i).jogarCarta(input2, this.numeroTurno, jogadores.get(i).getCartaMão(input2), secção.get(i));
 		if(secção.get(i).verificarFeiticos() == true) {
 			cartaFeiticos(i, ler);
+		}
+		if(secção.get(i).verificarEncantamentos() == true) {
+			cartaEncantamento(i, ler);
 		}
 	}
 
@@ -166,6 +171,82 @@ public class ArenaCombate {
 				secção.get(i).remover(feitico);
 			}
 		}
+	public void cartaEncantamento(int i, Scanner ler) {
+		int o = 1 - i;
+		Encantamentos encantamento = secção.get(i).encantamento();
+		if(encantamento.getValidacao().equals("Debuff")) {
+			System.out.println("Escolha uma criatura para aplicar debuff");
+			secção.get(o).printCartasCampo();
+			int input = Integer.parseInt(ler.nextLine());
+			Criatura criatura = (Criatura) secção.get(o).escolherCarta(input);
+			encantamento.buffUm(jogadores.get(i).getVez(), criatura);
+			jogadores.get(i).cemiterioReceberCartas(encantamento);
+			secção.get(i).remover(encantamento);
+		}
+		else if(encantamento.getValidacao().equals("Buff")) {
+			System.out.println("Escolha uma criatura para aplicar buff");
+			secção.get(i).printCartasCampo();
+			int input = Integer.parseInt(ler.nextLine());
+			Criatura criatura = (Criatura) secção.get(i).escolherCarta(input);
+			encantamento.buffUm(jogadores.get(i).getVez(), criatura);
+			jogadores.get(i).cemiterioReceberCartas(encantamento);
+			secção.get(i).remover(encantamento);
+		}
+		else if(encantamento.getValidacao().equals("Debuff todos")) {
+			encantamento.buffTodos(jogadores.get(i).getVez(), secção.get(o).getArray());
+			jogadores.get(i).cemiterioReceberCartas(encantamento);
+			secção.get(i).remover(encantamento);
+		}
+		else if(encantamento.getValidacao().equals("Anulação Debuff")) {
+			boolean criaturaDebuff = false;
+			while(criaturaDebuff == false) {
+				System.out.println("Escolha uma criatura para tirar o debuff");
+				secção.get(i).printCartasCampo();;
+				int input = Integer.parseInt(ler.nextLine());
+				Criatura criatura = (Criatura) secção.get(i).escolherCarta(input);
+				try {
+					if(criatura.getCongelado() == true || criatura.getQueimado() == true || criatura.getEnvenenado() == true) {
+						encantamento.buffUm(jogadores.get(i).getVez(), criatura);
+						jogadores.get(i).cemiterioReceberCartas(encantamento);
+						secção.get(i).remover(encantamento);
+						criaturaDebuff = true;
+					}
+					else {
+						throw new NoSpecialStatusException("Essa criatura não tem nenhum debuff");
+					
+					}
+				} catch(Exception e) {
+					System.out.println(e.getMessage());
+				}
+				
+				
+			}
+			
+		}
+		else if(encantamento.getValidacao().equals("Anulação Buff")) {
+			boolean criaturaDebuff = false;
+			while(criaturaDebuff == false) {
+				System.out.println("Escolha uma criatura para tirar o buff");
+				secção.get(o).printCartasCampo();;
+				int input = Integer.parseInt(ler.nextLine());
+				Criatura criatura = (Criatura) secção.get(o).escolherCarta(input);
+				try {
+					if(criatura.getCuras() == true) {
+						encantamento.buffUm(jogadores.get(i).getVez(), criatura);
+						jogadores.get(i).cemiterioReceberCartas(encantamento);
+						secção.get(i).remover(encantamento);
+						criaturaDebuff = true;
+					}
+					else {
+						throw new NoSpecialStatusException("Essa criatura não tem nenhum buff");
+					
+					}
+				} catch(Exception e) {
+					System.out.println(e.getMessage());
+				}
+			}
+		}
+	}
 	
 	public void turno(int i, Scanner ler) throws ManaInsuficienteException, CreatureCannotAttackException {
 		if(jogadores.get(i).getVida() > 0 && jogadores.get(1-i).getVida() > 0) {
@@ -186,6 +267,9 @@ public class ArenaCombate {
 			while(verdade == false) {
 				if(secção.get(i).verificarFeiticos() == true) {
 					cartaFeiticos(i, ler);
+				}
+				if(secção.get(i).verificarEncantamentos() == true) {
+					cartaEncantamento(i, ler);
 				}
 				if(jogadores.get(1-i).getVida() > 0) {
 					System.out.println("Jogar outra carta(c), Deseja ver o campo de batalha(b) ou terminar o turno(t)");

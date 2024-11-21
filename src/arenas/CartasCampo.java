@@ -33,6 +33,8 @@ public class CartasCampo {
 				Criatura criatura = (Criatura) cartas.get(i);
 				criatura.queimaduras();
 				criatura.gelado();
+				criatura.envenenar();
+				criatura.curar();
 				if(criatura.getDefesa() <= 0) {
 					jogador.cemiterioReceberCartas(criatura);
 					this.cartas.remove(i);
@@ -58,6 +60,12 @@ public class CartasCampo {
 				if(criatura.getCongelado() == true) {
 					System.out.print(" (Congelado)");
 				}
+				if(criatura.getEnvenenado() == true) {
+					System.out.print(" (Envenenado)");
+				}
+				if(criatura.getCuras() == true) {
+					System.out.print(" (Revigorado)");
+				}
 				System.out.printf(" poder: " + criatura.getPoder());
 				System.out.printf(" resitencia: " + criatura.getDefesa());
 				System.out.println();
@@ -66,6 +74,7 @@ public class CartasCampo {
 			}
 		}
 	}
+
 	public Carta escolherCarta(int input) {
 		Carta carta = null;
 		for(int i = 0; i < cartas.size(); i++) {
@@ -134,6 +143,16 @@ public class CartasCampo {
 			}
 		}
 		return (Feiticos) carta;
+	}
+	public Encantamentos encantamento() {
+		Carta carta = null;
+		for(Carta carta1 : cartas) {
+			if(carta1 instanceof Encantamentos) {
+				carta1 = (Encantamentos) carta1;
+				carta = carta1;
+			}
+		}
+		return (Encantamentos) carta;
 	}
 	public boolean verificarEncantamentos() {
 		boolean verdade = false;

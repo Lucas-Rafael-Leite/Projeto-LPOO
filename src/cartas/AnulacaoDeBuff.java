@@ -7,11 +7,13 @@ public class AnulacaoDeBuff  extends Encantamentos{
         super();
         setNome("Anulação de Buff");
         setMana(3);
+        setValidacao("Anulação Buff");
     }
     
-    public void verificarCriatura(Criatura destino){
-        
-       
+    public void buffUm(int dano, Criatura destino){
+        if(destino.getCuras()) {
+        	destino.setCuras();
+        }
     }
 
     

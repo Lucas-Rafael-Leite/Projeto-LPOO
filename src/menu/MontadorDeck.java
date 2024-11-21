@@ -258,7 +258,7 @@ public class MontadorDeck {
 	public void escolherCarta(Scanner ler) throws EmptyDeckException {
 		for(int i = 0; i < this.jogadores.size(); i++) {
 			boolean escolha = true;
-			while( escolha == true) {
+			while(escolha == true) {
 				System.out.println(jogadores.get(i).getNome());
 				System.out.println("Você deseja escolher dois decks pré-definidos (p) ou escolher cada carta (c) ");
 				String input = ler.nextLine();

@@ -16,6 +16,8 @@ public class Criatura extends Carta implements Atacavel{
 	private boolean estado;
 	private boolean queimado;
 	private boolean congelado;
+	private boolean envenenado;
+	private boolean curado;
 	public Criatura() {
 		setEstado();
 		setQueimado();
@@ -124,8 +126,46 @@ public class Criatura extends Carta implements Atacavel{
 				this.congelado = false;
 				this.estado = false;
 			}
+		}		
+	}
+	public void setEnvenenado() {
+		this.envenenado = false;
+	}
+	public boolean getEnvenenado() {
+		return this.envenenado;
+	}
+	public void envenenado(int vez) {
+		setVezEfeito(vez);
+		this.envenenado = true;
+	}
+	public void envenenar() {
+		if(this.envenenado == true) {
+			if(this.vezAtual == this.vezEfeito + 1) {
+				this.resistencia = this.resistencia - 1;
+				this.vezEfeito = this.vezAtual;
+			}
 		}
-		
+	}
+	public void setCuras() {
+		this.curado = false;
+	}
+	public boolean getCuras() {
+		return this.curado;
+	}
+	public void curas(int vez) {
+		setVezEfeito(vez);
+		this.curado = true;
+	}
+	public void curar() {
+		if(this.curado == true) {
+			if(this.vezAtual == this.vezEfeito + 1) {
+				this.resistencia = this.resistencia + 1;
+				if(this.resistencia > this.maxResistencia) {
+					this.resistencia = this.maxResistencia;
+				}
+				this.vezEfeito = this.vezAtual;
+			}
+		}
 	}
 }
 

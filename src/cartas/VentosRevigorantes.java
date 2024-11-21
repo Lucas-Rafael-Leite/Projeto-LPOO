@@ -9,5 +9,8 @@ public class VentosRevigorantes extends Encantamentos{
         danoEfeitoContinuo(-1);   
         setValidacao("Buff"); 
     }
-    
+    public void buffUm(int turnoAtual, Criatura destino){
+    	destino.curas(turnoAtual);
+    	
+    }
 }
