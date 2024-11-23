@@ -43,12 +43,13 @@ public class ArenaCombate {
 	    System.out.println();
 	}
 	public void escolherOutraCarta(int i, Scanner ler) throws ManaInsuficienteException {
+		int o = 1 - i;
 		System.out.printf("Quantidade de mana: " + jogadores.get(i).getMana());
 		System.out.println();
 		System.out.println("Escolha uma carta para jogar no campo");
 		this.jogadores.get(i).printMão();
 		int input2 = Integer.parseInt(ler.nextLine());	
-		jogadores.get(i).jogarCarta(input2, this.numeroTurno, jogadores.get(i).getCartaMão(input2), secção.get(i));
+		jogadores.get(i).jogarCarta(input2, this.numeroTurno, jogadores.get(i).getCartaMão(input2), secção.get(i), secção.get(o));
 		if(secção.get(i).verificarFeiticos() == true) {
 			cartaFeiticos(i, ler);
 		}
@@ -250,6 +251,7 @@ public class ArenaCombate {
 	
 	public void turno(int i, Scanner ler) throws ManaInsuficienteException, CreatureCannotAttackException {
 		if(jogadores.get(i).getVida() > 0 && jogadores.get(1-i).getVida() > 0) {
+			int o = 1 - i;
 			System.out.printf("Vez de " + jogadores.get(i).getNome());
 			System.out.println();
 			System.out.printf("Quantidade de mana: " + jogadores.get(i).getMana());
@@ -261,7 +263,7 @@ public class ArenaCombate {
 			secção.get(i).passarVezCriatura(jogadores.get(1-i).getVez());
 			this.jogadores.get(i).printMão();
 			int input = Integer.parseInt(ler.nextLine());	
-			jogadores.get(i).jogarCarta(input, this.numeroTurno ,jogadores.get(i).getCartaMão(input), secção.get(i));
+			jogadores.get(i).jogarCarta(input, this.numeroTurno ,jogadores.get(i).getCartaMão(input), secção.get(i), secção.get(o));
 			boolean verdade = false;
 			secção.get(i).verificarCartas(jogadores.get(i));
 			while(verdade == false) {

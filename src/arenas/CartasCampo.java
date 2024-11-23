@@ -173,4 +173,37 @@ public class CartasCampo {
 			cartas.remove(i);
 		}
 	}
+	public boolean criaturaPrecisaCura() {
+		boolean cura = false;
+		for(Carta carta : cartas) {
+			if(carta instanceof Criatura) {
+				if(((Criatura) carta).getDefesa() < ((Criatura) carta).getDefesaMax()){
+					cura = true;
+				}
+			}
+		}
+		return cura;
+	}
+	public boolean criaturaTemDebuff() {
+		boolean debuff = false;
+		for(Carta carta : cartas) {
+			if(carta instanceof Criatura) {
+				if(((Criatura) carta).getEnvenenado() == true || ((Criatura) carta).getCongelado() == true || ((Criatura) carta).getQueimado() == true ){
+					debuff = true;
+				}
+			}
+		}
+		return debuff;
+	}
+	public boolean criaturaTemBuff() {
+		boolean buff = false;
+		for(Carta carta : cartas) {
+			if(carta instanceof Criatura) {
+				if(((Criatura) carta).getCuras() == true){
+					buff = true;
+				}
+			}
+		}
+		return buff;
+	}
 }

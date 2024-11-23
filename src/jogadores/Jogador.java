@@ -9,6 +9,8 @@ import cartas.AtributosGeraisCriaturas;
 import cartas.Carta;
 
 import cartas.Criatura;
+import cartas.Encantamentos;
+import cartas.Feiticos;
 import excecoes.ManaInsuficienteException;
 import interfaces.Atacavel;
 
@@ -173,7 +175,7 @@ public class Jogador implements Atacavel {
 		return this.nome;
 	}
 
-	public void jogarCarta(int input, int vez, Carta carta, CartasCampo campo) throws ManaInsuficienteException{
+	public void jogarCarta(int input, int vez, Carta carta, CartasCampo campo, CartasCampo campoOponente) throws ManaInsuficienteException{
 		try {
 			if(input > this.mao.size()) {
 			
@@ -186,8 +188,13 @@ public class Jogador implements Atacavel {
 				throw new ManaInsuficienteException("Mana insuficiente");
 			
 			}
-			else{	
+			else if(verificarFeitico(input, campo) == true) {
 				
+			}
+			else if(verificarEncantamento(input,campo,campoOponente)) {
+				
+			}
+			else{	
 				this.mana = this.mana - getCartaMão(input).getMana();
 				carta = getCartaMão(input);
 				this.mao.remove(input-1);
@@ -207,7 +214,51 @@ public class Jogador implements Atacavel {
 			System.out.println(e.getMessage());
 		}
 	}
-
+	public boolean verificarFeitico(int input, CartasCampo campo) {
+		boolean verificar = false;
+		if(getCartaMão(input) instanceof Feiticos) {
+			Feiticos feitico = (Feiticos) getCartaMão(input);
+			if(feitico.getValidação().equals("cura um")){
+				if(campo.criaturaPrecisaCura() == false) {
+					System.out.println("nenhuma criatura precisa de cura");
+					verificar = true;
+				}
+				else if(campo.isEmpty() == true) {
+					System.out.println("Você não tem nenhuma criatura");
+					verificar = true;
+				}
+			}
+		}
+		return verificar;
+	}
+	public boolean verificarEncantamento(int input, CartasCampo campo, CartasCampo campoOponente) {
+		boolean verificar = false;
+		if(getCartaMão(input) instanceof Encantamentos) {
+			Encantamentos encantamento = (Encantamentos) getCartaMão(input);
+			if(encantamento.getValidacao().equals("Anulação Debuff")) {
+				if(campo.criaturaTemDebuff() == false) {
+					System.out.println("nenhuma criatura está com debuff");
+					verificar = true;
+				}
+				else if(campo.isEmpty() == true) {
+					System.out.println("Você não tem nenhuma criatura");
+					verificar = true;
+				}
+			}
+			else if(encantamento.getValidacao().equals("Anulação Buff")) {
+				if(campoOponente.criaturaTemBuff() == false) {
+					System.out.println("nenhuma criatura do oponente está com buff");
+					verificar = true;
+				}
+				else if(campoOponente.isEmpty() == true) {
+					System.out.println("O oponente não tem nenhuma criatura");
+					verificar = true;
+				}
+			}
+		}
+		return verificar;
+	}
+	
 	public void receberCarta(Carta carta){
 		this.deck.add(carta);
 	}
