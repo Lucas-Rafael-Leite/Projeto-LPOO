@@ -17,7 +17,8 @@ public class NomearJogadoresTela extends javax.swing.JFrame {
     
     
     public NomearJogadoresTela() {
-        initComponents();
+    	this.nomearJogadoresl = new NomearJogadores();
+    	initComponents();
     }
 
  
