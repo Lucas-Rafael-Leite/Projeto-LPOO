@@ -26,4 +26,7 @@ public class NomearJogadores {
 		montador.receberJogadores(jogadores.get(1));
 		
 	}
+	public ArrayList<Jogador> getJogadores(){
+		return this.jogadores;
+	}
 }
