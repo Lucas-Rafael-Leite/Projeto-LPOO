@@ -69,6 +69,8 @@ public class MontadorDeck {
 	private ArrayList<Carta> deck;
 	private ArrayList<Carta> deck2;
 	private Random random;
+        private String nomeDeck1;
+        private String nomeDeck2;
 	public MontadorDeck() {
 		this.jogadores = new ArrayList<>();
 		this.cartas = new ArrayList<>();
@@ -380,5 +382,26 @@ public class MontadorDeck {
 			}
 		}
 	}
+
+public ArrayList<Jogador> getArray(){
+    return this.jogadores;
+}
+
+public void setNomeDeck1(){
+    for(int n = 0; n <this.deck.size(); n++){
+       this.nomeDeck1 = deck.get(n).toString();
+    }
+}
+public void setNomeDeck2(){
+    for(int n = 0; n <this.deck2.size(); n++){
+       this.nomeDeck2 = deck.get(n).toString();
+    }
+}
+public String getNomeDeck1(){
+    return this.nomeDeck1;
+}
+public String getNomeDeck2(){
+    return this.nomeDeck2;
+}
 }
 
