@@ -4,7 +4,14 @@
  */
 package menu;
 
+import java.util.Scanner;
+
 import javax.swing.SwingUtilities;
+
+import arenas.ArenaCombate;
+import excecoes.CreatureCannotAttackException;
+import excecoes.EmptyDeckException;
+import excecoes.ManaInsuficienteException;
 
 /**
  *
@@ -13,11 +20,16 @@ import javax.swing.SwingUtilities;
 public class NomearJogadoresTela extends javax.swing.JFrame {
 
     private NomearJogadores nomearJogadoresl;
-    
+    private MontadorDeck deck;
+    private FimDaBatalha batalhaFim;
+    private ArenaCombate arena;
     
     
     public NomearJogadoresTela() {
     	this.nomearJogadoresl = new NomearJogadores();
+    	this.deck = new MontadorDeck();
+    	this.batalhaFim = new FimDaBatalha();
+    	this.arena = new ArenaCombate();
     	initComponents();
     }
 
@@ -66,7 +78,12 @@ public class NomearJogadoresTela extends javax.swing.JFrame {
         btnContinuar.setText("Continuar");
         btnContinuar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnContinuarActionPerformed(evt);
+                try {
+					btnContinuarActionPerformed(evt);
+				} catch (EmptyDeckException | ManaInsuficienteException | CreatureCannotAttackException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
             }
         });
 
@@ -123,16 +140,31 @@ public class NomearJogadoresTela extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_nomeJogador1ActionPerformed
 
-    private void btnContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContinuarActionPerformed
-       nomearJogadoresl.getJogadores().get(0).setNome(nomeJogador1.getText());
+    private void btnContinuarActionPerformed(java.awt.event.ActionEvent evt) throws EmptyDeckException, ManaInsuficienteException, CreatureCannotAttackException {//GEN-FIRST:event_btnContinuarActionPerformed
+    	Scanner ler = new Scanner(System.in);
+    	nomearJogadoresl.getJogadores().get(0).setNome(nomeJogador1.getText());
                 nomearJogadoresl.getJogadores().get(1).setNome(nomeJogador2.getText());
-
+                
                 // Exibe os nomes no console (ou pode passar para outro processo)
                 System.out.println("Jogador 1: " + nomearJogadoresl.getJogadores().get(0).getNome());
                 System.out.println("Jogador 2: " + nomearJogadoresl.getJogadores().get(1).getNome());
-
-                // Fechar a janela (opcional)
                 dispose();
+                nomearJogadoresl.transferirJogadores(deck);
+                deck.escolherCarta(ler);
+                deck.transferirJogadores(arena);
+        		while(batalhaFim.getVerdade() == true) {
+        		arena.vezJogador(ler);
+        		arena.jogadoresResetDeck();
+        		arena.transferirJogadores(batalhaFim);
+        		arena.removerJogadores();
+        		batalhaFim.fimDeJogo(ler);
+        		batalhaFim.transferirJogadores(arena);
+        		batalhaFim.removerJogadores();
+        		arena.resetTurno();
+        		}
+        		ler.close();
+                // Fechar a janela (opcional)
+             
     }//GEN-LAST:event_btnContinuarActionPerformed
 
     /**
