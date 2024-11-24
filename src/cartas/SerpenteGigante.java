@@ -9,5 +9,6 @@ public class SerpenteGigante extends Criatura {
 		setNome("Serpente Gigante");
 		setMana(5);
 		setId("33");
+		provocar();
 	}
 }

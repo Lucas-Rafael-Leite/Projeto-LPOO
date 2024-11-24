@@ -9,5 +9,6 @@ public class GambáGigante extends Criatura {
 		setNome("Gambá Gigante");
 		setMana(4);
 		setId("16");
+		provocar();
 	}
 }

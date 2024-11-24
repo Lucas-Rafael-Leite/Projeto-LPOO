@@ -92,14 +92,31 @@ public class ArenaCombate {
 				secção.get(o).printCartasCampo();
 				int input4 = Integer.parseInt(ler.nextLine());
 					if(input4 == 0) {
-					criatura.atacar(jogadores.get(o));
-					criatura.setEstado();
+						if(secção.get(o).criaturaTemProvocar() == false) {
+							criatura.atacar(jogadores.get(o));
+							criatura.setEstado();
+						}
+						else {
+							System.out.println("Você só pode atacar criaturas com provocar");
+						}
 					}
 					else {
-					Criatura criatura2 = (Criatura) secção.get(o).escolherCarta(input4);
-					criatura.atacar(criatura2);
-					criatura2.atacar(criatura);
-					criatura.setEstado();
+						Criatura criatura2 = (Criatura) secção.get(o).escolherCarta(input4);
+						if(secção.get(o).criaturaTemProvocar() == false) {
+							criatura.atacar(criatura2);
+							criatura2.atacar(criatura);
+							criatura.setEstado();
+						}
+						else {
+							if(criatura2.getProvocar() == true) {
+								criatura.atacar(criatura2);
+								criatura2.atacar(criatura);
+								criatura.setEstado();
+							}
+							else {
+								System.out.println("Você só pode atacar criaturas com provocar");
+							}
+						}
 					}	
 				}
 			}catch (Exception e) {

@@ -9,5 +9,6 @@ public class GolemDiamante extends Criatura {
 		setNome("Golem de Diamante");
 		setMana(7);
 		setId("21");
+		provocar();
 	}
 }

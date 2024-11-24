@@ -9,5 +9,6 @@ public class DragãoDaMontanha extends Criatura {
 		setNome("Dragão da Montanha");
 		setMana(5);
 		setId("6");
+		provocar();
 	}
 }

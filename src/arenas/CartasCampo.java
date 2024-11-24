@@ -66,6 +66,9 @@ public class CartasCampo {
 				if(criatura.getCuras() == true) {
 					System.out.print(" (Revigorado)");
 				}
+				if(criatura.getProvocar() == true) {
+					System.out.print(" (Provocar)");
+				}
 				System.out.printf(" poder: " + criatura.getPoder());
 				System.out.printf(" resitencia: " + criatura.getDefesa());
 				System.out.println();
@@ -205,5 +208,16 @@ public class CartasCampo {
 			}
 		}
 		return buff;
+	}
+	public boolean criaturaTemProvocar() {
+		boolean provocar = false;
+		for(Carta carta : cartas) {
+			if(carta instanceof Criatura) {
+				if(((Criatura) carta).getProvocar() == true){
+					provocar = true;
+				}
+			}
+		}
+		return provocar;
 	}
 }

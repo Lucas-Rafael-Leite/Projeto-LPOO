@@ -9,5 +9,6 @@ public class Leviatã extends Criatura {
 		setNome("Leviatã");
 		setMana(8);
 		setId("29");
+		provocar();
 	}
 }

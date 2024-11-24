@@ -201,6 +201,7 @@ public class Jogador implements Atacavel {
 				if(carta instanceof Criatura) {
 					campo.adicionarCriatura((Criatura) carta);
 					((Criatura) carta).setVez(vez);
+					verificarCriatura((Criatura) carta, campo, campoOponente);
 					
 				}
 
@@ -258,7 +259,33 @@ public class Jogador implements Atacavel {
 		}
 		return verificar;
 	}
-	
+	public void verificarCriatura(Criatura criatura,CartasCampo campo, CartasCampo campoOponente) {
+		if(criatura.getId().equals("4")|| criatura.getId().equals("26")) {
+			if(this.deck.size() > 0) {
+				int indice = random.nextInt(this.deck.size());
+				Carta carta = this.deck.get(indice);
+				this.mao.add(carta);
+				this.deck.remove(indice);
+			}
+			else {
+				this.mana = this.mana + 1;
+			}
+		}
+		else if(criatura.getId().equals("9") || criatura.getId().equals("1")) {
+			if(campoOponente.isEmpty() == false) {
+				int indice = random.nextInt(campoOponente.getCartasCampoSize());
+				Criatura oponente = (Criatura) campoOponente.getCarta(indice);
+				oponente.congelado(vez);
+			}
+		}
+		else if(criatura.getId().equals("11")|| criatura.getId().equals("14") || criatura.getId().equals("27") || criatura.getId().equals("32")) {
+			if(campoOponente.isEmpty() == false) {
+				int indice = random.nextInt(campoOponente.getCartasCampoSize());
+				Criatura oponente = (Criatura) campoOponente.getCarta(indice);
+				oponente.queimado(vez);
+			}
+		}
+	}
 	public void receberCarta(Carta carta){
 		this.deck.add(carta);
 	}

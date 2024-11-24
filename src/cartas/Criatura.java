@@ -18,10 +18,14 @@ public class Criatura extends Carta implements Atacavel{
 	private boolean congelado;
 	private boolean envenenado;
 	private boolean curado;
+	private boolean provocar;
 	public Criatura() {
 		setEstado();
 		setQueimado();
 		setCongelado();
+		setEnvenenado();
+		setProvocar();
+		setCuras();
 	}
 	public void setId(String id) {
 		this.id = id;
@@ -166,6 +170,15 @@ public class Criatura extends Carta implements Atacavel{
 				this.vezEfeito = this.vezAtual;
 			}
 		}
+	}
+	public void setProvocar() {
+		this.provocar = false;
+	}
+	public void provocar() {
+		this.provocar = true;
+	}
+	public boolean getProvocar() {
+		return this.provocar;
 	}
 }
 

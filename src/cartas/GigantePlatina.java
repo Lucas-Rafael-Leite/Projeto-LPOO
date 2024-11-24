@@ -9,6 +9,7 @@ public class GigantePlatina extends Criatura {
 		setNome("Gigante de Platina");
 		setMana(6);
 		setId("19");
+		provocar();
 	}
 
 }
