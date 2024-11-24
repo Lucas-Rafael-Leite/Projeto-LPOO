@@ -54,7 +54,7 @@ public class TelaMenu extends javax.swing.JFrame {
             }
         });
 
-        lblimagem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cronicasdearcanamenorainda.png"))); // NOI18N
+        lblimagem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cronicadearcana.png"))); // NOI18N
 
         javax.swing.GroupLayout painelLayout = new javax.swing.GroupLayout(painel);
         painel.setLayout(painelLayout);
@@ -127,3 +127,4 @@ public class TelaMenu extends javax.swing.JFrame {
     private javax.swing.JPanel painel;
     // End of variables declaration//GEN-END:variables
 }
+
