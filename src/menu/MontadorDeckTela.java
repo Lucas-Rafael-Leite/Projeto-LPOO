@@ -34,7 +34,7 @@ public class MontadorDeckTela extends javax.swing.JFrame {
         lblMensagem = new javax.swing.JLabel();
         btnDeck2 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        jList1 = new javax.swing.JList<>(deck1.converterArray(deck1.getDeck()));
         jScrollPane4 = new javax.swing.JScrollPane();
         jList2 = new javax.swing.JList<>();
 
