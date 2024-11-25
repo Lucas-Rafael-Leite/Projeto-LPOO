@@ -4,6 +4,10 @@
  */
 package menu;
 
+import java.util.ArrayList;
+
+import jogadores.Jogador;
+
 /**
  *
  * @author adene
@@ -13,11 +17,24 @@ public class MontadorDeckTela extends javax.swing.JFrame {
     private MontadorDeck montadorDeck;
     private MontadorDeck deck1; 
     private MontadorDeck deck2;
+    private ArrayList<Jogador> jogadores;
     /**
      * Creates new form MontadorDeckTela
      */
-    public MontadorDeckTela() {
-        initComponents();
+    public MontadorDeckTela(ArrayList<Jogador> jogadores) {
+    	this.montadorDeck = new MontadorDeck();
+    	this.deck1 = new MontadorDeck();
+    	this.deck2 = new MontadorDeck();
+    	this.jogadores = new ArrayList<>();
+    	montadorDeck.setDeck();
+    	montadorDeck.setDeck2();
+    	deck1.setDeck();
+    	deck1.setDeck2();
+    	deck2.setDeck();
+    	deck2.setDeck2();
+    	montadorDeck.receberJogadores(jogadores.get(0));
+    	montadorDeck.receberJogadores(jogadores.get(1));
+    	initComponents();
     }
 
     /**
@@ -34,7 +51,7 @@ public class MontadorDeckTela extends javax.swing.JFrame {
         lblMensagem = new javax.swing.JLabel();
         btnDeck2 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>(deck1.converterArray(deck1.getDeck()));
+        jList1 = new javax.swing.JList<>();
         jScrollPane4 = new javax.swing.JScrollPane();
         jList2 = new javax.swing.JList<>();
 
@@ -49,9 +66,7 @@ public class MontadorDeckTela extends javax.swing.JFrame {
 
         lblMensagem.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         lblMensagem.setForeground(new java.awt.Color(255, 51, 51));
-        lblMensagem.setText("Bem vindo ao montador de Deck"+montadorDeck.getArray().get(0).getNome()
-
-        );
+        lblMensagem.setText("Bem vindo ao montador de Deck " + montadorDeck.getArray().get(0).getNome());
         lblMensagem.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
                 lblMensagemAncestorAdded(evt);
@@ -63,7 +78,7 @@ public class MontadorDeckTela extends javax.swing.JFrame {
         });
 
         btnDeck2.setText("Deck 2");
-
+        
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = montadorDeck.converterArray(deck1.getDeck());
             public int getSize() { return strings.length; }
@@ -133,7 +148,7 @@ public class MontadorDeckTela extends javax.swing.JFrame {
     
     
     private void btnDeck1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-       MontadorDeckTela tela2 = new MontadorDeckTela();
+      
        
     }                                        
 
@@ -150,7 +165,7 @@ public class MontadorDeckTela extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MontadorDeckTela().setVisible(true);
+                
             }
         });
     }
@@ -166,3 +181,4 @@ public class MontadorDeckTela extends javax.swing.JFrame {
     private javax.swing.JPanel painel2;
     // End of variables declaration                   
 }
+
