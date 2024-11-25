@@ -15,16 +15,14 @@ public class Principal {
 		   SwingUtilities.invokeLater(() -> {
 	            TelaMenu telaMenu = new TelaMenu();
 	            telaMenu.setVisible(true);
-                    NomearJogadoresTela nomearJogadores = new NomearJogadoresTela();
-                    nomearJogadores.setVisible(true);
-                    MontadorDeckTela montadorDeck = new MontadorDeckTela();
-                    montadorDeck.setVisible(true);
+                   
 	        });
 	    
 	}
 }
 		
 		
+
 
 
 
