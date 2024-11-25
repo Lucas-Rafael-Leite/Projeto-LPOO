@@ -383,25 +383,31 @@ public class MontadorDeck {
 		}
 	}
 
-public ArrayList<Jogador> getArray(){
-    return this.jogadores;
-}
+	public ArrayList<Jogador> getArray(){
+		return this.jogadores;
+	}
 
-public void setNomeDeck1(){
-    for(int n = 0; n <this.deck.size(); n++){
-       this.nomeDeck1 = deck.get(n).toString();
-    }
-}
-public void setNomeDeck2(){
-    for(int n = 0; n <this.deck2.size(); n++){
-       this.nomeDeck2 = deck.get(n).toString();
-    }
-}
-public String getNomeDeck1(){
-    return this.nomeDeck1;
-}
-public String getNomeDeck2(){
-    return this.nomeDeck2;
-}
+	public void setNomeDeck1(){
+		for(int n = 0; n <this.deck.size(); n++){
+			this.nomeDeck1 = deck.get(n).toString();
+    	}
+	}
+	public void setNomeDeck2(){
+		for(int n = 0; n <this.deck2.size(); n++){
+			this.nomeDeck2 = deck.get(n).toString();
+		}
+	}
+	public String getNomeDeck1(){
+		return this.nomeDeck1;
+	}
+	public String getNomeDeck2(){
+		return this.nomeDeck2;
+	}
+	public ArrayList<Carta> getDeck1(){
+		return this.deck;
+	}
+	public ArrayList<Carta> getDeck2(){
+		return this.deck2;
+	}
 }
 
