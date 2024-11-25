@@ -78,12 +78,7 @@ public class NomearJogadoresTela extends javax.swing.JFrame {
         btnContinuar.setText("Continuar");
         btnContinuar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                try {
-					btnContinuarActionPerformed(evt);
-				} catch (EmptyDeckException | ManaInsuficienteException | CreatureCannotAttackException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+                btnContinuarActionPerformed(evt);
             }
         });
 
@@ -140,32 +135,16 @@ public class NomearJogadoresTela extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_nomeJogador1ActionPerformed
 
-    private void btnContinuarActionPerformed(java.awt.event.ActionEvent evt) throws EmptyDeckException, ManaInsuficienteException, CreatureCannotAttackException {//GEN-FIRST:event_btnContinuarActionPerformed
-    	Scanner ler = new Scanner(System.in);
-    	nomearJogadoresl.getJogadores().get(0).setNome(nomeJogador1.getText());
-                nomearJogadoresl.getJogadores().get(1).setNome(nomeJogador2.getText());
-                
-                // Exibe os nomes no console (ou pode passar para outro processo)
-                System.out.println("Jogador 1: " + nomearJogadoresl.getJogadores().get(0).getNome());
-                System.out.println("Jogador 2: " + nomearJogadoresl.getJogadores().get(1).getNome());
-                dispose();
-                nomearJogadoresl.transferirJogadores(deck);
-                deck.escolherCarta(ler);
-                deck.transferirJogadores(arena);
-        		while(batalhaFim.getVerdade() == true) {
-        		arena.vezJogador(ler);
-        		arena.jogadoresResetDeck();
-        		arena.transferirJogadores(batalhaFim);
-        		arena.removerJogadores();
-        		batalhaFim.fimDeJogo(ler);
-        		batalhaFim.transferirJogadores(arena);
-        		batalhaFim.removerJogadores();
-        		arena.resetTurno();
-        		}
-        		ler.close();
-                // Fechar a janela (opcional)
-             
-    }//GEN-LAST:event_btnContinuarActionPerformed
+    private void btnContinuarActionPerformed(java.awt.event.ActionEvent evt) {
+        dispose();
+        nomearJogadoresl.getJogadores().get(0).setNome(nomeJogador1.getText());
+        nomearJogadoresl.getJogadores().get(1).setNome(nomeJogador2.getText());
+        
+        // Passando os jogadores nomeados para a próxima tela
+        MontadorDeckTela montador = new MontadorDeckTela(nomearJogadoresl.getJogadores());
+        montador.setVisible(true);
+    }
+
 
     /**
      * @param args the command line arguments
