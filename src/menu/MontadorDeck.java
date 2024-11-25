@@ -69,14 +69,16 @@ public class MontadorDeck {
 	private ArrayList<Carta> deck;
 	private ArrayList<Carta> deck2;
 	private Random random;
-        private String nomeDeck1;
-        private String nomeDeck2;
+        private ArrayList<String> nomeDeck1;
+        private ArrayList<String> nomeDeck2;
 	public MontadorDeck() {
 		this.jogadores = new ArrayList<>();
 		this.cartas = new ArrayList<>();
 		this.deck = new ArrayList<>();
 		this.deck2 = new ArrayList<>();
 		this.random = new Random();
+                this.nomeDeck1 = new ArrayList<>();
+                this.nomeDeck2 = new ArrayList<>();
 	}
 	public void receberJogadores(Jogador jogador) {
 		this.jogadores.add(jogador);
@@ -383,31 +385,41 @@ public class MontadorDeck {
 		}
 	}
 
-	public ArrayList<Jogador> getArray(){
-		return this.jogadores;
-	}
+public ArrayList<Jogador> getArray(){
+    return this.jogadores;
+}
 
-	public void setNomeDeck1(){
-		for(int n = 0; n <this.deck.size(); n++){
-			this.nomeDeck1 = deck.get(n).toString();
-    	}
-	}
-	public void setNomeDeck2(){
-		for(int n = 0; n <this.deck2.size(); n++){
-			this.nomeDeck2 = deck.get(n).toString();
-		}
-	}
-	public String getNomeDeck1(){
-		return this.nomeDeck1;
-	}
-	public String getNomeDeck2(){
-		return this.nomeDeck2;
-	}
-	public ArrayList<Carta> getDeck1(){
-		return this.deck;
-	}
-	public ArrayList<Carta> getDeck2(){
-		return this.deck2;
-	}
+public void setNomeDeck1(){
+    for(int n = 0; n <this.deck.size(); n++){
+       this.nomeDeck1.add(this.deck.get(n).toString());
+    }
+}
+public void setNomeDeck2(){
+    for(int n = 0; n <this.deck2.size(); n++){
+       this.nomeDeck2.add(this.deck2.get(n).toString());
+    }
+}
+public ArrayList<String> getNomeDeck1(){
+    return this.nomeDeck1;
+}
+public ArrayList<String> getNomeDeck2(){
+    return this.nomeDeck2;
+}
+
+public String[] converterArray(ArrayList<Carta> deck){
+    String[] arrayConvertido = new String[deck.size()];
+    for(int i = 0; i<deck.size(); i++){
+        arrayConvertido[i] = deck.get(i).toString();
+    }
+    return arrayConvertido;
+   }
+
+public ArrayList<Carta> getDeck() {
+        return this.deck;
+}
+public ArrayList<Carta> getDeck2() {
+        return this.deck2;
+}
+
 }
 
