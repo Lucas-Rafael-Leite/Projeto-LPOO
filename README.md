@@ -146,7 +146,7 @@ Caso o jogador queira terminar o turno basta digitar t, assim passando o turno p
 
 ### Detalhes do Combate/Funcionamento do jogo
 Mostrado o fluxo de turno, agora alguns detalhes do combate/funcionamento do jogo:
-Primeiro é que existem criaturas, feitiços e encantamentos, porém por enquanto só estão funcionando as criaturas e alguns feitiços, os outros feitiços e os encantamentos ainda estão sendo trabalhados para integrarem o combate
+Primeiro é que existem criaturas, feitiços e encantamentos, já funcionam quase todos os feitiços e encantamentos 
 #### Feitiços
 Como dito anteriormente alguns feitiços estão funcionando, eles têm um comportamento diferente ao serem jogados no campo, enquanto as criaturas ao serem jogadas entram no campo de batalha e o jogador vai para a tela das opções, com alguns feitiços isso é diferente, mas depois de jogados os feitiços vão para o cemitério
 ##### Feitiços de ataque único
