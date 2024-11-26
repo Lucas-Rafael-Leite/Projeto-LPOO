@@ -67,7 +67,7 @@ public class Jogador implements Atacavel {
 		return this.vida;
 	}
 	public void setVida(){
-		this.vida = 15;
+		this.vida = 20;
 	}
 	public int getMana() {
 		return this.mana;
@@ -283,6 +283,13 @@ public class Jogador implements Atacavel {
 				int indice = random.nextInt(campoOponente.getCartasCampoSize());
 				Criatura oponente = (Criatura) campoOponente.getCarta(indice);
 				oponente.queimado(vez);
+			}
+		}
+		else if(criatura.getId().equals("13") || criatura.getId().equals("12") ) {
+			if(campo.isEmpty() == false) {
+				int indice = random.nextInt(campo.getCartasCampoSize());
+				Criatura aliado = (Criatura) campo.getCarta(indice);
+				aliado.receberDano(-1);
 			}
 		}
 	}

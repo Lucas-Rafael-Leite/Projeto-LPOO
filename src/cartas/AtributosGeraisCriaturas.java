@@ -12,6 +12,7 @@ public class AtributosGeraisCriaturas {
 			criatura.ataque(poder);
 			criatura.defesa(resistencia);
 			criatura.defesaMax(resistenciaMax);
+			criatura.setEstado();
 		}
 		else if(criatura.getId().equals("2")) {
 			this.poder = 3;
@@ -20,6 +21,7 @@ public class AtributosGeraisCriaturas {
 			criatura.ataque(poder);
 			criatura.defesa(resistencia);
 			criatura.defesaMax(resistenciaMax);
+			criatura.setEstado();
 		}
 		else if(criatura.getId().equals("3")) {
 			this.poder = 3;
@@ -28,6 +30,7 @@ public class AtributosGeraisCriaturas {
 			criatura.ataque(poder);
 			criatura.defesa(resistencia);
 			criatura.defesaMax(resistenciaMax);
+			criatura.setEstado();
 		}
 		else if(criatura.getId().equals("4")) {
 			this.poder = 4;
@@ -36,6 +39,7 @@ public class AtributosGeraisCriaturas {
 			criatura.ataque(poder);
 			criatura.defesa(resistencia);
 			criatura.defesaMax(resistenciaMax);
+			criatura.setEstado();
 		}
 		else if(criatura.getId().equals("5")) {
 			this.poder = 2;
@@ -44,6 +48,7 @@ public class AtributosGeraisCriaturas {
 			criatura.ataque(poder);
 			criatura.defesa(resistencia);
 			criatura.defesaMax(resistenciaMax);
+			criatura.setEstado();
 		}
 		else if(criatura.getId().equals("6")) {
 			this.poder = 2;
@@ -52,6 +57,7 @@ public class AtributosGeraisCriaturas {
 			criatura.ataque(poder);
 			criatura.defesa(resistencia);
 			criatura.defesaMax(resistenciaMax);
+			criatura.setEstado();
 		}
 		else if(criatura.getId().equals("7")) {
 			this.poder = 2;
@@ -60,6 +66,7 @@ public class AtributosGeraisCriaturas {
 			criatura.ataque(poder);
 			criatura.defesa(resistencia);
 			criatura.defesaMax(resistenciaMax);
+			criatura.setEstado();
 		}
 		else if(criatura.getId().equals("8")) {
 			this.poder = 4;
@@ -68,6 +75,7 @@ public class AtributosGeraisCriaturas {
 			criatura.ataque(poder);
 			criatura.defesa(resistencia);
 			criatura.defesaMax(resistenciaMax);
+			criatura.setEstado();
 		}
 		else if(criatura.getId().equals("9")) {
 			this.poder = 2;
@@ -76,6 +84,7 @@ public class AtributosGeraisCriaturas {
 			criatura.ataque(poder);
 			criatura.defesa(resistencia);
 			criatura.defesaMax(resistenciaMax);
+			criatura.setEstado();
 		}
 		else if(criatura.getId().equals("10")) {
 			this.poder = 2;
@@ -84,6 +93,7 @@ public class AtributosGeraisCriaturas {
 			criatura.ataque(poder);
 			criatura.defesa(resistencia);
 			criatura.defesaMax(resistenciaMax);
+			criatura.setEstado();
 		}
 		else if(criatura.getId().equals("11")) {
 			this.poder = 3;
@@ -92,6 +102,7 @@ public class AtributosGeraisCriaturas {
 			criatura.ataque(poder);
 			criatura.defesa(resistencia);
 			criatura.defesaMax(resistenciaMax);
+			criatura.setEstado();
 		}
 		else if(criatura.getId().equals("12")) {
 			this.poder = 3;
@@ -100,6 +111,7 @@ public class AtributosGeraisCriaturas {
 			criatura.ataque(poder);
 			criatura.defesa(resistencia);
 			criatura.defesaMax(resistenciaMax);
+			criatura.setEstado();
 		}
 		else if(criatura.getId().equals("13")) {
 			this.poder = 1;
@@ -108,6 +120,7 @@ public class AtributosGeraisCriaturas {
 			criatura.ataque(poder);
 			criatura.defesa(resistencia);
 			criatura.defesaMax(resistenciaMax);
+			criatura.setEstado();
 		}
 		else if(criatura.getId().equals("14")) {
 			this.poder = 1;
@@ -116,6 +129,7 @@ public class AtributosGeraisCriaturas {
 			criatura.ataque(poder);
 			criatura.defesa(resistencia);
 			criatura.defesaMax(resistenciaMax);
+			criatura.setEstado();
 		}
 		else if(criatura.getId().equals("15")) {
 			this.poder = 4;
@@ -132,6 +146,7 @@ public class AtributosGeraisCriaturas {
 			criatura.ataque(poder);
 			criatura.defesa(resistencia);
 			criatura.defesaMax(resistenciaMax);
+			criatura.setEstado();
 		}
 		else if(criatura.getId().equals("17")) {
 			this.poder = 1;
@@ -148,6 +163,7 @@ public class AtributosGeraisCriaturas {
 			criatura.ataque(poder);
 			criatura.defesa(resistencia);
 			criatura.defesaMax(resistenciaMax);
+			criatura.setEstado();
 		}
 		else if(criatura.getId().equals("19")) {
 			this.poder = 1;
@@ -156,6 +172,7 @@ public class AtributosGeraisCriaturas {
 			criatura.ataque(poder);
 			criatura.defesa(resistencia);
 			criatura.defesaMax(resistenciaMax);
+			criatura.setEstado();
 		}
 		else if(criatura.getId().equals("20")) {
 			this.poder = 1;
@@ -164,6 +181,7 @@ public class AtributosGeraisCriaturas {
 			criatura.ataque(poder);
 			criatura.defesa(resistencia);
 			criatura.defesaMax(resistenciaMax);
+			criatura.setEstado();
 		}
 		else if(criatura.getId().equals("21")) {
 			this.poder = 1;
@@ -172,6 +190,7 @@ public class AtributosGeraisCriaturas {
 			criatura.ataque(poder);
 			criatura.defesa(resistencia);
 			criatura.defesaMax(resistenciaMax);
+			criatura.setEstado();
 		}
 		else if(criatura.getId().equals("22")) {
 			this.poder = 3;
@@ -204,6 +223,7 @@ public class AtributosGeraisCriaturas {
 			criatura.ataque(poder);
 			criatura.defesa(resistencia);
 			criatura.defesaMax(resistenciaMax);
+			criatura.setEstado();
 		}
 		else if(criatura.getId().equals("26")) {
 			this.poder = 3;
@@ -212,6 +232,7 @@ public class AtributosGeraisCriaturas {
 			criatura.ataque(poder);
 			criatura.defesa(resistencia);
 			criatura.defesaMax(resistenciaMax);
+			criatura.setEstado();
 		}
 		else if(criatura.getId().equals("27")) {
 			this.poder = 3;
@@ -220,6 +241,7 @@ public class AtributosGeraisCriaturas {
 			criatura.ataque(poder);
 			criatura.defesa(resistencia);
 			criatura.defesaMax(resistenciaMax);
+			criatura.setEstado();
 		}
 		else if(criatura.getId().equals("28")) {
 			this.poder = 2;
@@ -236,6 +258,7 @@ public class AtributosGeraisCriaturas {
 			criatura.ataque(poder);
 			criatura.defesa(resistencia);
 			criatura.defesaMax(resistenciaMax);
+			criatura.setEstado();
 		}
 		else if(criatura.getId().equals("30")) {
 			this.poder = 4;
@@ -252,6 +275,7 @@ public class AtributosGeraisCriaturas {
 			criatura.ataque(poder);
 			criatura.defesa(resistencia);
 			criatura.defesaMax(resistenciaMax);
+			criatura.setEstado();
 		}
 		else if(criatura.getId().equals("32")) {
 			this.poder = 5;
@@ -260,6 +284,7 @@ public class AtributosGeraisCriaturas {
 			criatura.ataque(poder);
 			criatura.defesa(resistencia);
 			criatura.defesaMax(resistenciaMax);
+			criatura.setEstado();
 		}
 		else if(criatura.getId().equals("33")) {
 			this.poder = 4;
@@ -268,6 +293,7 @@ public class AtributosGeraisCriaturas {
 			criatura.ataque(poder);
 			criatura.defesa(resistencia);
 			criatura.defesaMax(resistenciaMax);
+			criatura.setEstado();
 		}
 		else if(criatura.getId().equals("34")) {
 			this.poder = 3;
@@ -276,6 +302,7 @@ public class AtributosGeraisCriaturas {
 			criatura.ataque(poder);
 			criatura.defesa(resistencia);
 			criatura.defesaMax(resistenciaMax);
+			criatura.setEstado();
 		}
 		else if(criatura.getId().equals("35")) {
 			this.poder = 1;
@@ -284,6 +311,7 @@ public class AtributosGeraisCriaturas {
 			criatura.ataque(poder);
 			criatura.defesa(resistencia);
 			criatura.defesaMax(resistenciaMax);
+			criatura.setEstado();
 		}
 	}
 }
