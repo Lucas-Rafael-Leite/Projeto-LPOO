@@ -260,7 +260,7 @@ public class Jogador implements Atacavel {
 		return verificar;
 	}
 	public void verificarCriatura(Criatura criatura,CartasCampo campo, CartasCampo campoOponente) {
-		if(criatura.getId().equals("4")|| criatura.getId().equals("26")) {
+		if(criatura.getId().equals("4")|| criatura.getId().equals("26") || criatura.getId().equals("18")) {
 			if(this.deck.size() > 0) {
 				int indice = random.nextInt(this.deck.size());
 				Carta carta = this.deck.get(indice);
@@ -327,5 +327,3 @@ public class Jogador implements Atacavel {
 }
 
 
-	
-	
