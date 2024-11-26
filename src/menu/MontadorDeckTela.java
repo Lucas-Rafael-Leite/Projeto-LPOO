@@ -78,6 +78,11 @@ public class MontadorDeckTela extends javax.swing.JFrame {
         });
 
         btnDeck2.setText("Deck 2");
+        btnDeck2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeck2ActionPerformed(evt);
+            }
+        });
         
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = montadorDeck.converterArray(deck1.getDeck());
@@ -148,9 +153,19 @@ public class MontadorDeckTela extends javax.swing.JFrame {
     
     
     private void btnDeck1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-      
+    	
+    	dispose();
+    	MontadorDeckTela2 montador2 = new MontadorDeckTela2(montadorDeck.getArray());
+    	 montador2.setVisible(true);
+    	 dispose();
        
-    }                                        
+    }  
+    private void btnDeck2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+    	
+    	MontadorDeckTela2 montador2 = new MontadorDeckTela2(montadorDeck.getArray());
+   	 	montador2.setVisible(true);
+   	 	dispose();
+   }  
 
     private void lblMensagemAncestorAdded(javax.swing.event.AncestorEvent evt) {                                          
       
