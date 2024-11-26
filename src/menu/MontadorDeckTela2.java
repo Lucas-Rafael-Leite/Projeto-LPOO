@@ -136,11 +136,15 @@ public class MontadorDeckTela2 extends javax.swing.JFrame {
  }
 
  private void btnDeck1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-     
+     for(int n = 0; n < deck1.getDeck().size(); n++) {
+    		montadorDeck.getArray().get(1).receberCarta(montadorDeck.getDeck().get(n));
+		}
  }   
 
  private void btnDeck2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-     
+     for(int n = 0; n < deck2.getDeck2().size(); n++) {
+    		montadorDeck.getArray().get(1).receberCarta(montadorDeck.getDeck2().get(n));
+		}
  }                                        
 
  private void btnAvancarActionPerformed(java.awt.event.ActionEvent evt) {                                           
