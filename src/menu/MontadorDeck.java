@@ -93,7 +93,7 @@ public class MontadorDeck {
 		this.deck2.removeAll(deck2);
 	}
 	public void setDeck() {
-		this.deck.add(new Javali());
+		this.deck.add(new AnulacaoDeBuff());
 		this.deck.add(new AlmaDeMana());
 		this.deck.add(new AtiradorNoturno());
 		this.deck.add(new Cavaleiro());
@@ -121,18 +121,18 @@ public class MontadorDeck {
 		this.deck.add(new Leviatã());
 		this.deck.add(new BolaDeNeve());
 		this.deck.add(new BolaDeNeve());
-		this.deck.add(new Cura());
+		this.deck.add(new Envenenamento());
 		this.deck.add(new Cura());
 		
 	}
 	public void setDeck2() {
 		this.deck2.add(new AlmaDeMana());
 		this.deck2.add(new AlmaDeMana());
-		this.deck2.add(new AlmaDeMana());
+		this.deck2.add(new AnulacaoDeDebuff());
 		this.deck2.add(new CavaleiroLuz());
 		this.deck2.add(new Cura());
 		this.deck2.add(new BolaDeCanhao());
-		this.deck2.add(new BolaDeCanhao());
+		this.deck2.add(new VentosRevigorantes());
 		this.deck2.add(new BolaDeFogo());
 		this.deck2.add(new DragaoFogo());
 		this.deck2.add(new GolemDiamante());
@@ -385,41 +385,41 @@ public class MontadorDeck {
 		}
 	}
 
-public ArrayList<Jogador> getArray(){
-    return this.jogadores;
-}
+	public ArrayList<Jogador> getArray(){
+		return this.jogadores;
+	}
 
-public void setNomeDeck1(){
-    for(int n = 0; n <this.deck.size(); n++){
-       this.nomeDeck1.add(this.deck.get(n).toString());
-    }
-}
-public void setNomeDeck2(){
-    for(int n = 0; n <this.deck2.size(); n++){
-       this.nomeDeck2.add(this.deck2.get(n).toString());
-    }
-}
-public ArrayList<String> getNomeDeck1(){
-    return this.nomeDeck1;
-}
-public ArrayList<String> getNomeDeck2(){
-    return this.nomeDeck2;
-}
+	public void setNomeDeck1(){
+		for(int n = 0; n <this.deck.size(); n++){
+			this.nomeDeck1.add(this.deck.get(n).toString());
+		}
+	}
+	public void setNomeDeck2(){
+		for(int n = 0; n <this.deck2.size(); n++){
+			this.nomeDeck2.add(this.deck2.get(n).toString());
+		}
+	}
+	public ArrayList<String> getNomeDeck1(){
+		return this.nomeDeck1;
+	}
+	public ArrayList<String> getNomeDeck2(){
+		return this.nomeDeck2;
+	}
 
-public String[] converterArray(ArrayList<Carta> deck){
-    String[] arrayConvertido = new String[deck.size()];
-    for(int i = 0; i<deck.size(); i++){
-        arrayConvertido[i] = deck.get(i).toString();
-    }
-    return arrayConvertido;
-   }
+	public String[] converterArray(ArrayList<Carta> deck){
+		String[] arrayConvertido = new String[deck.size()];
+		for(int i = 0; i<deck.size(); i++){
+			arrayConvertido[i] = deck.get(i).toString();
+		}
+		return arrayConvertido;
+	}
 
-public ArrayList<Carta> getDeck() {
+	public ArrayList<Carta> getDeck() {
         return this.deck;
-}
-public ArrayList<Carta> getDeck2() {
+	}
+	public ArrayList<Carta> getDeck2() {
         return this.deck2;
-}
+	}
 
 }
 
