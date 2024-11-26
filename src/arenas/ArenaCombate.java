@@ -368,6 +368,11 @@ public class ArenaCombate {
 			fim.receberJogadores(jogadores.get(i));
 		}
 	}
+	
+	
+	public ArrayList<Jogador> getArray(){
+		return this.jogadores;
+	}
 }
 
 
