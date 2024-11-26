@@ -1,7 +1,17 @@
 # Projeto-LPOO
 ## Explicações 
-Essa interação do projeto é controlada através do input do usuário, abaixo o fluxo do Jogo:
+Temos uma parte da interface gráfica, abaixo as partes dela:
+### Menu
+![Captura de tela 2024-11-25 224429](https://github.com/user-attachments/assets/39152ce1-f1df-4edb-8b21-27bd3cb39e11)
+
+### Tela de seleção de nomes
+
+![Captura de tela 2024-11-25 224525](https://github.com/user-attachments/assets/11c48bcf-e05d-495a-a2d3-79881067ace0)
+
+
+Abaixo o fluxo de jogo pelo terminal:
 primeiro aparece uma tela para você digitar os nomes do Jogador 1 e do Jogador 2:
+
 
 ![Captura de tela 2024-11-04 175902](https://github.com/user-attachments/assets/01a3dcf9-914f-414b-a297-e48c0a47ddf7)
 
@@ -216,6 +226,39 @@ e seu dano é igual ou maior que a vida da criatura adversária, a criatura que 
 ![Captura de tela 2024-11-04 182938](https://github.com/user-attachments/assets/0b3c0f85-8ba5-4ab2-8f6d-0515055207d8)
 
 A criatura pode atacar diretamente o jogador
+
+As criaturas tem as seguintes habilidades
+Rapidez:
+
+ ![Captura de tela 2024-11-25 225343](https://github.com/user-attachments/assets/8d97baf1-89da-40fc-bf9a-522b8740e7ea)
+
+
+ A criatura com rapidez pode atacar no mesmo turno que é jogada, porém elas continuam realizando somente um ataque, as criaturas com rapidez são:
+ Javali Selvagem, Franco Atirador, Golem de Lava, Lobo Elétrico, Gigante de Ferro, Leão das Trevas, Grifo
+
+ Comprar cartas ao serem jogadas:
+ se você jogar alguma dessas criaturas no campo elas puxam uma carta do seu deck e caso você não tenha mais cartas elas te dão 1 de mana
+ As criaturas com essa habilidade são:
+ Cavaleiro da Luz, Leão da Ilha, Gigante de Ouro
+
+ Imunidade a queimaduras e congelamento:
+ existem o status negativos de estar ou queimado ou congelado
+ Cavaleiro das trevas é imune a ser queimado 
+ Lobo da Neve é imune a ser congelado
+
+ Queimaduras ao jogar:
+ Algumas criaturas dão o status negativo de queimado ao serem jogadas no campo a alguma criatura do adversário:
+ essas criaturas são: Espirito de fogo, Dragão de Fogo, Leão de Fogo e Quimera
+ 
+Congelamento ao jogar:
+outras criaturas congelam as outras ao serem jogadas
+essas criaturas são: Dragão de Gelo, Aranha Gigante
+
+Provocar:
+Algumas criaturas tem provocar, essas criaturas obrigam as criaturas adversárias a só atacar ela
+as criaturas que tem essa habilidade são: Serpente Gigante, Gambá Gigante, Gigante de Platina, Golem de Diamante, Golem de Pedra, Dragão da Montanha
+
+
  ### Fim de Jogo
 Cada jogador tem sua própria vida, caso um dos jogadores fique com a vida zero, termina a batalha e você vai aparecer isso na tela
 
@@ -265,9 +308,6 @@ existe caso não queira de ignorar essa opção
 ### Informações Adicionais
 A main está na classe Principal.Java que está no pacote game, existem os seguintes pacotes: arenas, cartas, excecoes, game, interfaces, jogadores e menu.
 
-Ainda não foi implementada uma interface gráfica, ela está sendo feita usando o Swing, mas ainda não colocamos nada dela no github e nem nesse checkpoint
-
 Para atacar o jogador adversário digite 0
-
-O repositório do github está público, então provavelmente é possível ver as imagens desse readme, caso não esteja conseguindo ver as imagens avise no feedback do checkpoint 3.  
+  
 
