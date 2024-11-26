@@ -194,6 +194,9 @@ Depois
 Esse feitiço causou um de dano em todas as criaturas do adversário
 #### Alma de Mana
 Esse feitiço aparece como custo -1, ao utilizá-lo o jogador ganha mais um de mana
+### Encantamentos
+Os encantamentos podem buffar como ventos revigorantes que cura 1 de vida de alguma criatura ou podem dar debuff como o campo de fogo que deixa todas as criaturas do adversário queimadas
+Dá para anular debuff(tirar os status de envenenamento, congelamento e queimado) ou anular buff quando a criatura adversária está sendo curada pelos ventos revigorantes
 #### Criaturas
 Agora falando mais das criaturas, elas podem realizar um ataque:
 
